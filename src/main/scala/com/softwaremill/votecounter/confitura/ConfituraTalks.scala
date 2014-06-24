@@ -1,8 +1,7 @@
 package com.softwaremill.votecounter.confitura
 
 import com.softwaremill.votecounter.db.Talk
-import com.softwaremill.votecounter.talks.AgendaFileReader
-import org.joda.time.{LocalTime, DateTime, DateTimeZone, LocalDate}
+import org.joda.time.{LocalTime, DateTimeZone, LocalDate}
 
 trait TalksProvider {
 

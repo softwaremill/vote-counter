@@ -14,7 +14,7 @@ class TestDataPopulator(deviceDao: DevicesDao, voteDao: VotesDao, appFlags: AppF
 
   def populateWithTestData() {
     if (!appFlags.isTestDataInserted) {
-      val devices = Seq(Device(key = "123", name = "foo", deviceId = Some(1)))
+      val devices = Seq(Device(key = "123", name = "foo", deviceId = Some(1), roomId = "dzem"))
 
       val votes = Seq(
         Vote(positive = true, castedAt = DateTime.now().minusDays(1), deviceId = 1, id = "123"),

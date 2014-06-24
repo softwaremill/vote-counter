@@ -8,8 +8,7 @@ import com.softwaremill.votecounter.db._
 import akka.actor.{Props, ActorSystem}
 import com.softwaremill.thegarden.lawn.shutdownables._
 import com.softwaremill.votecounter.web.VoteCounterWebService
-import com.softwaremill.votecounter.confitura.{ConfituraTalks, TalksProvider, RoomsProvider, ConfituraRooms}
-import com.softwaremill.votecounter.talks.AgendaFileReader
+import com.softwaremill.votecounter.confitura._
 
 
 trait ConfigModule {

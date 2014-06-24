@@ -1,4 +1,4 @@
-package com.softwaremill.votecounter.talks
+package com.softwaremill.votecounter.confitura
 
 import org.joda.time.LocalTime
 import java.text.{Normalizer, SimpleDateFormat}
@@ -61,7 +61,7 @@ class AgendaFileReader {
     transformationChain(json)
   }
 
-  protected[talks] def parseJson(jsonString: String) = {
+  private[confitura] def parseJson(jsonString: String) = {
     val ast = parse(jsonString)
     val fixedAst = fixJson(ast)
     val agenda = fixedAst.extract[Agenda]
@@ -78,14 +78,14 @@ class AgendaFileReader {
 }
 
 case class Agenda(version: String, talks: Seq[TalkData]) {
-  private[talks] def findDuplicateTalksIds = {
+  private[confitura] def findDuplicateTalksIds = {
     val allTalkIds = talks.map(_.talkId)
     val distinctTalkIds = allTalkIds.distinct
 
     allTalkIds.diff(distinctTalkIds).distinct
   }
 
-  private[talks] def verifyUniqueTalkIds() = {
+  private[confitura] def verifyUniqueTalkIds() = {
     val duplicateTalksIds = findDuplicateTalksIds
     if (!duplicateTalksIds.isEmpty) {
       throw new IllegalStateException("Found following duplicate talk ids: " +

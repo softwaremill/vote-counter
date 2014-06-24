@@ -1,4 +1,4 @@
-package com.softwaremill.votecounter.talks
+package com.softwaremill.votecounter.confitura
 
 import org.scalatest.{ShouldMatchers, FlatSpec}
 import com.typesafe.scalalogging.slf4j.LazyLogging
