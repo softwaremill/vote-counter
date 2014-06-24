@@ -22,4 +22,42 @@ class VotesDao(val database: SQLDatabase) extends DBSchema {
     }
   }
 
+  def insertIfNew(vote: Vote) = {
+    db.withTransaction { implicit session =>
+      val voteInDbOpt = votes.filter(_.id === vote.id).firstOption
+      if (voteInDbOpt.isEmpty) {
+        votes.insert(vote)
+        vote
+      } else {
+        voteInDbOpt.get
+      }
+    }
+  }
+
+  def count(): Int = {
+    db.withSession { implicit session =>
+      votes.size.run
+    }
+  }
+
+  def findAllByRoom(): Map[Room, List[Vote]] = {
+    db.withSession { implicit session =>
+      val query = for {
+        v <- votes
+        d <- devices if v.deviceId === d.id
+        r <- rooms if d.roomId === r.id
+      } yield (v, r)
+
+      query.list groupBy { case (v, r) => r} map {
+        case (key, votesWithRooms) =>
+          (key, votesWithRooms map { case (vote, room) => vote})
+      }
+    }
+  }
+
+  private[db] def truncate() = {
+    db.withSession { implicit session =>
+      votes.delete
+    }
+  }
 }
