@@ -6,18 +6,20 @@ import org.joda.time.DateTime
 import com.softwaremill.votecounter.db.Vote
 import com.softwaremill.votecounter.db.Device
 import scala.Some
+import com.softwaremill.votecounter.infrastructure.AppFlags
+import com.softwaremill.votecounter.confitura.{TalksProvider, RoomsProvider}
 
 
-class TestDataPopulator(deviceDao: DeviceDao, voteDao: VoteDao, appFlags: AppFlags) {
+class TestDataPopulator(deviceDao: DevicesDao, voteDao: VotesDao, appFlags: AppFlags) {
 
   def populateWithTestData() {
     if (!appFlags.isTestDataInserted) {
       val devices = Seq(Device(key = "123", name = "foo", deviceId = Some(1)))
 
       val votes = Seq(
-        Vote(positive = true, castedAt = DateTime.now().minusDays(1), deviceId = 1, voteId = "123"),
-        Vote(positive = true, castedAt = DateTime.now().minusDays(2), deviceId = 1, voteId = "311"),
-        Vote(positive = false, castedAt = DateTime.now().minusDays(3), deviceId = 1, voteId = "41a")
+        Vote(positive = true, castedAt = DateTime.now().minusDays(1), deviceId = 1, id = "123"),
+        Vote(positive = true, castedAt = DateTime.now().minusDays(2), deviceId = 1, id = "311"),
+        Vote(positive = false, castedAt = DateTime.now().minusDays(3), deviceId = 1, id = "41a")
       )
 
       for (device <- devices)
@@ -27,6 +29,20 @@ class TestDataPopulator(deviceDao: DeviceDao, voteDao: VoteDao, appFlags: AppFla
         voteDao.insert(vote)
 
       appFlags.flagTestDataInserted()
+    }
+  }
+}
+
+class ConferenceDataInitializer(roomsProvider: RoomsProvider, roomsDao: RoomsDao,
+                                talksProvider: TalksProvider, talksDao: TalksDao) {
+
+  def initializeAndBlock() {
+    for (room <- roomsProvider.rooms) {
+      roomsDao.insert(room)
+    }
+
+    for (talk <- talksProvider.talks) {
+      talksDao.insert(talk)
     }
   }
 }
@@ -51,9 +67,11 @@ class DBInitializer(protected val database: SQLDatabase) extends DBSchema {
       }
     }
 
-    createTableIfDoesNotExist(DevicesTableName, devices.ddl)
-    createTableIfDoesNotExist(VotesTableName, votes.ddl)
     createTableIfDoesNotExist(FlagTableName, flags.ddl)
+    createTableIfDoesNotExist(RoomsTableName, rooms.ddl)
+    createTableIfDoesNotExist(DevicesTableName, devices.ddl)
+    createTableIfDoesNotExist(TalksTableName, talks.ddl)
+    createTableIfDoesNotExist(VotesTableName, votes.ddl)
   }
 
 }

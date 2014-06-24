@@ -6,7 +6,7 @@ import com.softwaremill.votecounter.testutil.SQLSupport
 
 class FlagDaoSpec extends FlatSpec with SQLSupport with ShouldMatchers {
 
-  val flagDao = new FlagDao(sqlDatabase)
+  val flagDao = new FlagsDao(sqlDatabase)
 
   it should "not find a flag that does not exist in the DB" in {
     flagDao.find("foo.bar") shouldEqual None

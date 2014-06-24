@@ -1,0 +1,635 @@
+{
+  "breaks": 
+  [
+    {
+      "title": "Przerwa obiadowa",
+      "description": null,
+      "start": "12:40",
+      "end": "13:40"
+    },
+    {
+      "title": "Przerwa",
+      "description": null,
+      "start": "16:50",
+      "end": "17:10"
+    },
+    {
+      "title": "-",
+      "description": null,
+      "start": "09:30",
+      "end": "09:30"
+    },
+    {
+      "title": "Przerwa",
+      "description": null,
+      "start": "11:30",
+      "end": "11:50"
+    },
+    {
+      "title": "SPOINa",
+      "description": null,
+      "start": "19:00",
+      "end": "23:59"
+    },
+    {
+      "title": "Rejestracja i kawa",
+      "description": null,
+      "start": "08:00",
+      "end": "09:10"
+    },
+    {
+      "title": "Przerwa",
+      "description": null,
+      "start": "10:20",
+      "end": "10:40"
+    },
+    {
+      "title": "Przerwa",
+      "description": null,
+      "start": "14:30",
+      "end": "14:50"
+    },
+    {
+      "title": "Przerwa",
+      "description": null,
+      "start": "15:40",
+      "end": "16:00"
+    },
+    {
+      "title": "-",
+      "description": null,
+      "start": "18:00",
+      "end": "18:00"
+    }
+  ],
+  "ver": "1.1.27",
+  "talks": 
+  [
+    {
+      "title": "Twórz i Rządź, czyli jak developer może pobawić się hardwarem - iBeacony, RaspberryPi, druk 3D",
+      "speakers": 
+      [
+        {
+          "firstName": "Tomasz",
+          "lastName": "Szymański",
+          "photo": "http://c4p.confitura.pl/files/speaker/125/z_broda.jpg"
+        },
+        {
+          "firstName": "Jarosław",
+          "lastName": "Kijanowski",
+          "photo": "http://c4p.confitura.pl/files/speaker/128/head.jpg"
+        }
+      ],
+      "description": "W naszej prezentacji pokażemy jak stworzyliśmy system do głosowania z którego możecie korzystać na aktualnej confiturze, ale też jak samemu możecie zrobić proste rzeczy które można dotknąć i wcisnąć ;-)   Opowiemy o:\n\nSamym RaspberryPi\nPorcie rozszerzeń GPIO na RaspberryPi i tego jak do niego coś podłączyć\nDruku 3D - pokażemy naszą drukarkę i to w czym można swoje własne projekty robić\niBeaconach\n  Nie zabraknie też oczywiście tego jak wszystkie klocki zostały oprogramowane i (miejmy nadzieje) razem ze sobą działają.",
+      "room": "Marmolada",
+      "start": "16:00",
+      "end": "16:50"
+    },
+    {
+      "title": "Nie koduj, pisz prozę - lingwistyczne techniki wychodzące daleko poza Clean Code",
+      "speakers": 
+      [
+        {
+          "firstName": "Sławomir",
+          "lastName": "Sobótka",
+          "photo": "http://c4p.confitura.pl/files/speaker/116/ss.png"
+        }
+      ],
+      "description": "Dlaczego nasz kod na pierwszy rzut oka jest w sumie tak samo czytelny\njak karty perforowane wkładane do komputerów Odra?\nDlaczego wprowadzenie zmian w 10-letnim kodzie jest tak kosztowne -\nprzecież wszystko powinno być tam już napisane...\n\n\nPodczas prezentacji zajmiemy się typowymi błędami:\n- zbytnie uogólnienie,\n- nieodpowiednie abstrakcje,\n- oderwanie od kontekstu,\noraz technikami, których możesz jeszcze nie znać:\n- modelowanie obiektów poprzez wyłanianie podmiotów, orzeczeń i dopełnień\n- modelowanie granic agregatów poprzez ochronę niezmienników\n- odwrócenie kolejności: od zachowań do obiektów\n- zestaw kilku wzorców i building blocks\npo to aby kod pisany w starej poczciwej Javie stał historyjką domenową i był czytelny niczym proza.",
+      "room": "Marmolada",
+      "start": "10:40",
+      "end": "11:30"
+    },
+    {
+      "title": "Programowanie JEE'ish bez stresu",
+      "speakers": 
+      [
+        {
+          "firstName": "Jakub",
+          "lastName": "Marchwicki",
+          "photo": "http://c4p.confitura.pl/files/speaker/106/jakub-marchwicki.jpeg"
+        }
+      ],
+      "description": "W zasadzie staje się to standardem w każdym `community`: nie potrzebujesz Railsów aby zbudować aplikację w webową w Ruby, nie potrzeba silnika szablonów do PHP, bo PHP jest sam w sobie silnikiem szablonów. Ciągły przerost formy nad treścią, over engineering oraz malowanie złotem.\n\nNie inaczej jest w świecie Java: Hibernate + EJB + JSF to nie jedyne, pobłogosławione frameworki konieczne do zbudowania dobrej aplikacji webowej... można nawet dyskutować że te akuratnie są najgorsze. To samo Spring; nie jest lekki od conamniej kilku lat. Wciąż jest świetnym narzędziem, ale niekoniecznie najprostszym. No więc jakie mamy opcje? Jak nie Spring, nie JEE, to co my szarzy programiści możemy wybrać?\n\nW tej prezentacji przejdę przez kilka opcji jak można lekko i efektywnie zbudować aplikację webową używając Javy: łatwo, szybko, elastycznie. Zaczynając od najprostszych prostot jak jetty, poprzez kilka micro-frameworków webowych, mniejszych lub większych swiss-army knifes. Wszystkie one obiecują dwie rzeczy: zaopiekować się sporą częścią twoich zmartwień a przy okazji wciąż być lekkie i używalne.",
+      "room": "Dżem",
+      "start": "09:30",
+      "end": "10:20"
+    },
+    {
+      "title": "Working with database - still shooting yourself in the foot?",
+      "speakers": 
+      [
+        {
+          "firstName": "Piotr",
+          "lastName": "Turski",
+          "photo": "http://c4p.confitura.pl/files/speaker/73/t1.png"
+        }
+      ],
+      "description": "Jak wam się żyje z waszą bazą danych? Czy podczas testów używacie np H2 i wierzycie, że na produkcji wszystko zadziała tak samo? Czy może używacie tej samej bazy co na produkcji i narzekacie, ze wszystko działa tak wolno? Jak budujecie bazę na produkcji a jak podczas testów? Czy wasza baza testowa na pewno wygląda i działa tak samo jak produkcyjna? Na jakiej bazie uruchamiacie aplikację lokalnie? Jak radzicie sobie z funkcjonalnościami nie obsługiwanymi przez hibernate'a? Jaki macie sposób na LazyInitializationException? Jak pracujecie z branchami, quick-fixami i migracjami baz danych? Czy macie projekty integracyjne z integracją poprzez bazę danych?\n\nPodzielę się moimi doświadczeniami z kilku projektów, opowiem jak udało nam się poradzić sobie z powyższymi problemami, jak podnieśliśmy wiarygodność naszych testów nie rezygnując z szybkości, jak przestaliśmy się martwić modyfikacjami bazy produkcyjnej i jak praca z bazą stała się znacznie miej uciążliwa.\nPorozmawiamy tez o wadach kilku popularnych narzędzi jak np dbunit, flyway, liquibase, hbm2ddl.auto, H2. Opowiem których się pozbyliśmy i jak pracujemy z pozostałymi. Co się udało a co nie. Być może będzie trochę herezji ale wszystko to na podstawie doświadczeń w prawdziwych projektach.",
+      "room": "Powidło",
+      "start": "14:50",
+      "end": "15:40"
+    },
+    {
+      "title": "Zakończenie i rozdanie nagród",
+      "speakers": 
+      [
+        {
+          "firstName": "Kapituła",
+          "lastName": null,
+          "photo": null
+        }
+      ],
+      "description": null,
+      "room": "Konfitura",
+      "start": "18:00",
+      "end": "18:30"
+    },
+    {
+      "title": "Git nie dla początkujących",
+      "speakers": 
+      [
+        {
+          "firstName": "Tomasz",
+          "lastName": "Borek",
+          "photo": null
+        }
+      ],
+      "description": "To nie jest prezentacja dla kompletnych nowicjuszy, to nie jest też wiedza potrzebna do bezstresowego używania narzędzia. Idzie o pogłębienie wiedzy. Będę starał się, by widzowie mogli zrozumieć Gita - wierząc, że to pomoże go lepiej użyć, ale żadną miarą nie stawiając sobie tego za cel główny.",
+      "room": "Marmolada",
+      "start": "14:50",
+      "end": "15:40"
+    },
+    {
+      "title": "TBD",
+      "speakers": 
+      [
+        {
+          "firstName": "Kapituła",
+          "lastName": null,
+          "photo": null
+        }
+      ],
+      "description": "TBD",
+      "room": "Spiżarnia (2-gi budynek)",
+      "start": "16:00",
+      "end": "16:50"
+    },
+    {
+      "title": "Grzechy główne liderów technicznych",
+      "speakers": 
+      [
+        {
+          "firstName": "Mariusz",
+          "lastName": "Sieraczkiewicz",
+          "photo": "http://c4p.confitura.pl/files/speaker/120/MS_drawing_small.jpg"
+        }
+      ],
+      "description": "Wielu z nas staje się liderami z dnia na dzień. Oto z ekspertów technicznych stajemy przed całkowicie odmiennym zadaniem – poprowadzenia zespołu często w niesprzyjających warunkach. Walczymy z klientem, zespołem, ze sobą, z project managerem i wszędzie pojawiają się kłody pod nogami. Jakże tęskno nam zaczyna być do czasów, kiedy tylko programowaliśmy, nie braliśmy pod uwagę kaprysów innych osób i wszystko było pod kontrolą. Tak, to prawda większość z nas nie jest przygotowana do tej drogi. Czasami „musimy”, czasami chcemy, czasami po prostu jakoś tak wyszło. Czasami się frustrujemy, nie wiedząc o co w tym wszystkim chodzi, a czasami cieszymy się jak dzieci, bo naszemu zespołowi się udaje.\n\nCi wszyscy, którzy tę drogę mają przed sobą, albo są w trakcie, albo ją przebyli i chcą przyjrzeć się z boku temu, co się dzieje, kiedy stajemy się liderami technicznymi, będą mogli przeanalizować główne popełniane grzechy. Usłyszycie kilka historii z życia wziętych i kilka prostych lecz niełatwych heurystyk radzenia sobie z owymi grzechami.",
+      "room": "Konfitura",
+      "start": "09:30",
+      "end": "10:20"
+    },
+    {
+      "title": "Go! The one language you have to try in 2014.",
+      "speakers": 
+      [
+        {
+          "firstName": "Andrzej",
+          "lastName": "Grzesik",
+          "photo": "http://c4p.confitura.pl/files/speaker/8/_MG_1708_small_square.jpg"
+        }
+      ],
+      "description": "You live and breathe http. Most of the things you do with a computer involve it. How many tiny little http-related utils have you already created?   I'd just like to encourage you to write the next one in Go. It's a fun little language, which feels like a cross-breed between C (pointers!) and ruby (concise, powerful syntax). But how much?   Why, yet another language, but my perl/python/.. does all the things? Well, it does. But go has a few things that make it super sweet, is web-scale and real fun to use!    Or at least come and listen how did we get rid of 87% of our codebase in a day :-)",
+      "room": "Powidło",
+      "start": "11:50",
+      "end": "12:40"
+    },
+    {
+      "title": "TBD",
+      "speakers": 
+      [
+        {
+          "firstName": "Kapituła",
+          "lastName": null,
+          "photo": null
+        }
+      ],
+      "description": "TBD",
+      "room": "Spiżarnia (2-gi budynek)",
+      "start": "17:10",
+      "end": "18:00"
+    },
+    {
+      "title": "Jak być szczęśliwym Developerem?",
+      "speakers": 
+      [
+        {
+          "firstName": "Łukasz",
+          "lastName": "Żuchowski",
+          "photo": "http://c4p.confitura.pl/files/speaker/68/cv_sq_small.jpg"
+        }
+      ],
+      "description": "Nazywam się Łukasz Żuchowski i pracuje w SoftwareMill, chciałbym się podzielić z Wami moimi doświadczeniami odnośnie pracy i budowania kariery jako software developer. Podczas mojej kariery moje spojrzenie na pracę programisty wielokrotnie się zmieniało i ewoluowało. Jak każdy z was stawałem przed trudnymi wyborami podążając krętą ścieżką kariery. Dzisiaj mogę o sobie powiedzieć, że jestem szczęśliwym developerem i chciałbym przekazać Wam to co udało mi się odkryć podczas tej podróży. Na pewno nie mam złotej recepty na bycie szczęśliwym developerem ale myślę, że moje doświadczenia mogą Wam pomóc.\n\nMoja prezentacja może być szczególnie wartościowa dla osób zaczynających karierę programisty ale myślę, że uda mi zainspirować także tych doświadczonych programistów do tego, aby coś w swoim życiu zmienić.\n\nCzas prezentacji to ok. 30-40 minut, było by super, gdyby udało mi się Was wciągnąć w dyskusję.",
+      "room": "Dżem",
+      "start": "14:50",
+      "end": "15:40"
+    },
+    {
+      "title": "Rozpoczęcie",
+      "speakers": 
+      [
+        {
+          "firstName": "Kapituła",
+          "lastName": null,
+          "photo": null
+        }
+      ],
+      "description": null,
+      "room": "Konfitura",
+      "start": "09:10",
+      "end": "09:30"
+    },
+    {
+      "title": "Testowanie ze Spockiem - nowości w nadchodzącej wersji 1.0",
+      "speakers": 
+      [
+        {
+          "firstName": "Marcin",
+          "lastName": "Zajączkowski",
+          "photo": "http://c4p.confitura.pl/files/speaker/28/szpak-avatar-sun-flares.jpg"
+        }
+      ],
+      "description": "Spock jest frameworkiem umożliwiającym pisanie prostszych i czytelniejszych testow dla kodu w Java i Groovy. Jego ostatnia stabilna wersja (0.7) została wydana w październiku 2012 roku. Od tego czasu (ponad 1,5 roku) w repozytorium Git dokonano setek commitow zmieniających kilkadziesiąt tysięcy linii kodu. W czasie prezentacji przedstawię najciekawsze zmiany, jakie już teraz czekają w repozytorium kodu oraz te, które mają dużą szansę tam się znaleźć jeszcze przed wydaniem wersji 1.0.",
+      "room": "Marmolada",
+      "start": "11:50",
+      "end": "12:40"
+    },
+    {
+      "title": "NoSQL - tylko nie NoSQL. Jak sobie radzić z nowym podejściem do baz danych.",
+      "speakers": 
+      [
+        {
+          "firstName": "Marcin",
+          "lastName": "Karkocha",
+          "photo": "http://c4p.confitura.pl/files/speaker/9/1383658_601755903215597_1031045632_n.jpg"
+        }
+      ],
+      "description": "Moda na bazy NoSQLowe wciąż nie ustaje, jednak jak wielu ten nurt ma zwolenników tak wielu także przeciwników. Wiele osób zniechęca się do NoSQLa po pierwszym kontakcie z nim, przez to ilość przeciwników rośnie. Prezentacja o tym jakie błędy popełniają nowincjusze i jak tych błędów unikać. O tym do czego jaki typ bazy najlepiej wykorzystać i gdzie można szukać wsparcia.",
+      "room": "Marmolada",
+      "start": "13:40",
+      "end": "14:30"
+    },
+    {
+      "title": "TBD",
+      "speakers": 
+      [
+        {
+          "firstName": "Kapituła",
+          "lastName": null,
+          "photo": null
+        }
+      ],
+      "description": "TBD",
+      "room": "Marmolada",
+      "start": "17:10",
+      "end": "18:00"
+    },
+    {
+      "title": "Efektywna Refaktoryzacja",
+      "speakers": 
+      [
+        {
+          "firstName": "Włodek",
+          "lastName": "Krakowski",
+          "photo": "http://c4p.confitura.pl/files/speaker/35/Wlodek_photo_jpg---Copy.jpg"
+        }
+      ],
+      "description": "Balance – to słowo które słyszymy w wielu miejscach ale nie koniecznie w naszym fachu. Ale o jakiej równowadze w oprogramowaniu możemy mówić? Czym jest równowaga której potrzebujemy i jak ją możemy osiągnąć? Marketingowcy potrzebują produktu który mogą sprzedać, programiści potrzebują produktu który jest łatwo i przyjemnie rozwijać.  \n\nW jaki sposób możemy zadbać o tą równowagę? Kto jest za to odpowiedzialny? Czy programiści mogą tylko narzekać “Jeżeli tylko mielibyśmy więcej czasu to na pewno byśmy pisali unit-testy… / Bardzo byśmy chcieli zadbać o nasz design... Kod byłby w lepszym stanie gdyby tylko...”? Czy słyszeliście takie narzekania od osób obok swojego biurka? Co możemy z tym zrobić? Czy wystarczy być tylko dobrym programistą czy potrzebne jest coś jeszcze?  \n\nW mojej prezentacji (wraz z chwilą live-codingu) przedstawię na czym polega efektywna refaktoryzacja. Jest ona połączeniem dwóch rzeczy : umiejętności technicznych oraz psychologicznych. Refaktoring służy osiągnięciu równowagi pomiędzy produkcją (klienci otrzymują działający software) a zdolnością produkcyjną (programiści mogą go dalej rozwijać). Efektywność zależy natomiast od tego w jaki sposób chcemy o tą równowagę zadbać.   \n\nCelem mojej prezentacji będzie zachęcenie słuchaczy do zmiany podejścia, aby  kod refaktoryzawać od razu kiedy jest to potrzebne I aby stało się to naszą codzienną praktyką. Każdy/a z nas chce być w pracy szczęśliwy/a. Chcemy być także zawsze zmotywowani, ale w jaki sposób o to dbamy? Chcemy mieć kod najwyższej jakości, pokryty testami, zorientowany obiektowo, ale tak naprawdę co robimy aby to osiągnąć?  \n\nPodczas prezentacji opowiem o Siedmiu Nawykach Skutecznego Działania (Stephena Coveya) I pokażę w jaki sposób można je zastosować w inżynierii oprogramowania (a w szczególności w refaktoryzacji kodu).  \n\nBądź proaktywny\n\nCzy czekasz aż rzeczy których oczekujesz się same wydaża czy narzekasz że nie  dzieje się po Twojej myśli?  Czy jesteś częścia problemu czy częścia jego rozwiązania? “To nie ja – to zespół” - czy słyszałeś tego typu narzekania?  \n\nZaczynaj z wizją końca\n\nCzy w pracy zadajesz sobie pytanie “do czego tak naprawdę dąże w danym zadaniu”? Jak powinienem je wykonać? Dlaczego je wykonuję w ten a nie inny sposó?  Jakie będą dla mnie/zespołu konsekwecje odpowiedzi na w/w pytania w najbliższej przyszłości?  Czy rzeczywiście zaoszczędzę swój czas  pomijając refaktoring bo przecież “produkt nadal działa”?  \n\nZrób najpierw to co najważniejsze\n\nZ pewnościa czasem w pracy musimy “gasić pożar”. Ale jak jest wówczas nasza motywacja? “Muszę” czy “chcę“? Przecież to dwa zupełnie inne podejścia i jeżeli chcemy aby motywowało nas to drugie to trzeba o to zadbać poprzez bycie proaktywnym I działania które mają na celu zminimalizowanie ilość takich “pożarów”. Wóczas będziemy mieli więcej czasu aby o swój kod zadbać.   \n\nMyśl w kategoriach wygrana – wygrana albo nie robimy interesu   J\n\nJakie jest Twoje podejście do współpracowników? Czy postrzgasz ich (a szczególnie ludzi od biznesu) jako konkurencję z która trzeba walczyć czy może współpracować aby osiągąć wspólny cel, tj dostarczyć dla klienta produkt który będzie działał I będzie mógł być dalej poprawiany (gdyż nie ma bezbłędnego oprogramowania)?   \n\nNajpierw zrozum a potem bądź zrozumiany   W jaki sposób pracować z zastanym kodem? Czy dodajesz do niego jedynie nową funkcjonalność czy też refaktoryzujesz go przed / po dodaniem tej funkcjonalności? Czy starasz się naprawdę zrozumieć design istniejącego kodu czy narzucasz I wprowadzasz natychmiast swoje “nowe/lepsze” rozwiązanie bo wiesz wszystko lepiej a ten kod jest przecież stary?  \n\nWprowadzaj synergię\n\nCzy znasz różnicę pomiędzy synergią a kompromisem kiedy dwoje ludzi na odmienne zdanie? Każdy zespół zyska najwięcej kiedy ludzie będą współpracować aby znaleść najlepsze rozwiązanie które zadowoli wszystkich niż kiedy każdy przekonuje wyłącznie do swojej racji.  \n\nPamiętaj aby naostrzyć swoją piłę\n\nCzy troszczysz się o siebie I o swój rozwój? Czy znasz rejony w których powinieneś wzrastać aby być zawsze efektywnym (rozmój fizyczny, umysłowy, emocjonalny I duchowy)?  Czy wiesz że czasem przychodzi czas aby przestać myśleć o refaktoryzacji I zająć się czymś innym?",
+      "room": "Konfitura",
+      "start": "13:40",
+      "end": "14:30"
+    },
+    {
+      "title": "Rapid dev environments",
+      "speakers": 
+      [
+        {
+          "firstName": "Marcin",
+          "lastName": "Brański",
+          "photo": null
+        },
+        {
+          "firstName": "Przemek",
+          "lastName": "Hejman",
+          "photo": null
+        }
+      ],
+      "description": "Wspólnie chcielibyśmy poruszyć bardziej DevOps'owe tematy na Confiturze, które przyśpieszą waszą pracę. Jeśli pracujesz w zwinnym środowisku, jeśli kiedyś poczułeś na własnej skórze, że tworzenie nowej testowej maszyny trwa zbyt długo to pokażemy jak wziąć sprawy w swoje ręce.\n\nNa prezentacji pokażemy jak znajomość nowych technologii może być pomocna w codziennej pracy. Wprowadzimy w świat wirtualizacji i deploymentu aplikacji na przykładzie Dockera/Vagranta/Chmury i przygotowanie obrazów dzięki Packerowi. Pokażemy różnicę między typami wirtualizacji, które w jakim przypadku będą najbardziej użyteczne.\n\nPrzedstawimy czym jest automatyzacja (Puppet/Chef/Ansible/Salt) z punktu widzenia developera, który chciałby szybko i sprawnie skonfigurować sobie środowisko i mieć nad nim pełną kontrolę. Co można, a czego nie można zrobić wykorzystując najnowsze devopsowe technologie. Podzielimy się naszymi doświadczeniemi doświadczeniami i podpowiemy jak uniknąć błędów.\n\nNa koniec postaramy się opowiedzieć z grubsza o ciekawych projektach (MCollective/Foreman/PuppetDB/Atomic Project/Serf/Consul), aby zainspirować ludzi do dalszych poszukiwań.",
+      "room": "Dżem",
+      "start": "16:00",
+      "end": "16:50"
+    },
+    {
+      "title": "Jak przerobić monolityczną aplikację na architekturę mikroserwisów ?",
+      "speakers": 
+      [
+        {
+          "firstName": "Tomasz",
+          "lastName": "Lelek",
+          "photo": "http://c4p.confitura.pl/files/speaker/29/2014-05-01-18.52.27.jpg"
+        }
+      ],
+      "description": "Tworząc architekturę w oparciu o koncepcję mikro serwisów, przed zespołem staje wiele wyzwań.\n\n-Budowanie łatwo rozszerzalnej architektury mirkoserwisów. Tworząc nowy serwis, zawsze potrzebujemy danych z innego. Aby je otrzymać wystarczy zaimportować lekkiego klienta, który jest interfejsem innego serwisu.\n\n-Jak odpowiednio wykorzystać protokół http, aby zamienić go w swój największy atut i nie próbować ukrywać go niepotrzebnie ?\n\n-które funkcjonalności wyciągnąć jako pierwsze ? Jak wykorzystać domain driven design, do modelowania domeny biznesowej, w sposób specyficznych dla danego mikroserwisu ?\n\n-Jak zarządzać konfiguracją, i deploymentem wielu serwisów ?\n\n-implementowanie wzorca Circuit Breaker, używając biblioteki Netflix Hystrix\n\n \n\ntechnologie: \n\nspring, java, scala, scalatra, hystrix, sbt",
+      "room": "Dżem",
+      "start": "13:40",
+      "end": "14:30"
+    },
+    {
+      "title": "TBD",
+      "speakers": 
+      [
+        {
+          "firstName": "Kapituła",
+          "lastName": null,
+          "photo": null
+        }
+      ],
+      "description": "TBD",
+      "room": "Powidło",
+      "start": "16:00",
+      "end": "16:50"
+    },
+    {
+      "title": "Wzorce organicznej architektury - pamiętnik szaleńca",
+      "speakers": 
+      [
+        {
+          "firstName": "Jarosław",
+          "lastName": "Pałka",
+          "photo": null
+        }
+      ],
+      "description": "Projektowanie systemów metodą \"bottom-up\" lub \"top-down\", zgodnie z zasadami TOGAF, korzystając z UML, modelując procesy z wykorzystaniem BPMN, odkrywając uroki SOA, małe systemy i te duże, hipsterskie frameworki, i pomniki ludzkiej ignorancji pielęgnowane przez podstarzałych fanów Iron Maiden?\n\nJak efektywnie i efektownie podejść do architektury systemu? Które podejście wybrać? Jak przeprowadzić system przez ciąg zmiany, by nie zwariować, by nie zmarnować pieniędzy na bezproduktywnych spotkaniach, dyskusjach i pogaduszkach, jak nie stracić serca i zdrowia poszukując wartości biznesowej i uzasadniając wartość tejże wartości? Po latach spędzonych w projektach różnej skali, ewolucji \"waterfall\", rewolucji \"Agile\" i schizmy \"Kanban\" i \"Lean\". Po kilkunastu \"rewolucjach\" technologicznych, eksplozjach trendów, i utraconych nadziei pokładanych w narzędziach i podejściach, zrozumiałem i chcąc czy nie chcąc, musiałem zaakceptować, że jako branża nie dostarczamy ani rozwiązań ani wartości biznesowej. Jedyne co dostarczamy to coraz większa złożoność systemów z którymi pracujemy. I nie ważne jak szybko procesory wykonują instrukcje i ile czas zainwestujemy w jakość, na koniec każdego dnia dostarczamy tylko rozwiązania które wcześniej czy później zostaną pożarte przez swoją własną złożoność. Być może \"Software is eating the world\", jednak w tym samym czasie złożoność pożera systemy.\n\nPodczas tej filozoficznej dysputy, opowiem o pewnych wzorcach, które odkryłem czy też skradłem, kilku prostych sztuczkach, które pozwolą wam zapanować nad rozszalałą złożonością systemtów, karmioną przez naszą ignorancję. Nadałem tym prostym techniką nazwy, by było łatwiej o nich rozmawiać, krytykować i rozwijać. Nazwałem je wzorcami organicznej architektury. Dlaczego? Dlatego, że tylko natura, której esencją jest organiczny rozwój, bez kontroli naczelnego architekta, potrafi utrzymać w ryzach złożoność systemów. Natura nie ma spotkań, estymat, planowania. Jednak potrafi tworzyć rzeczy piękne w swej prostocie.\n\nI nieważne w jakiej technologi czy też metodologi, te proste wzorce pozwolą Ci bez pomocy architektów zamkniętych w wieżach z kości słoniowej, dostarczyć proste i efektywne rozwiązania.",
+      "room": "Spiżarnia (2-gi budynek)",
+      "start": "10:40",
+      "end": "11:30"
+    },
+    {
+      "title": "Clean architecture - jak uporządkować architekturę Twojej aplikacji. Wnioski z projektu.",
+      "speakers": 
+      [
+        {
+          "firstName": "Andrzej",
+          "lastName": "Bednarz",
+          "photo": "http://c4p.confitura.pl/files/speaker/85/aa2.jpg"
+        }
+      ],
+      "description": "Wszelkie znaki na ziemi i niebie wskazują, że Uncle Bob aktualnie pracuje nad książką \"Clean architecture\". My już zastosowaliśmy w praktyce to podejście i zaprezentujemy przykładowy system, podzielimy się się wnioskami, pokażemy jego siłę i słabości. Inspiracje to też DDD, CQRS, DCI, Hexagonal Architecture",
+      "room": "Spiżarnia (2-gi budynek)",
+      "start": "14:50",
+      "end": "15:40"
+    },
+    {
+      "title": "TBD",
+      "speakers": 
+      [
+        {
+          "firstName": "Kapituła",
+          "lastName": null,
+          "photo": null
+        }
+      ],
+      "description": "TBD",
+      "room": "Dżem",
+      "start": "17:10",
+      "end": "18:00"
+    },
+    {
+      "title": "Archeologia kodu źródłowego",
+      "speakers": 
+      [
+        {
+          "firstName": "Paweł",
+          "lastName": "Ślusarz",
+          "photo": "http://c4p.confitura.pl/files/speaker/37/mugshot3.jpg"
+        }
+      ],
+      "description": "Prezentacja jest oparta o 15 lat doświadczeń obserwacji ewolucji projektów oprogramowania i systemów. Dwa lata temu, kiedy zdecydowaliśmy się na standardyzację bibliotek JAR w naszej firmie, rozpocząłem swoje pierwsze prace archeologiczne. Te prace stanowiły punkt wyjścia do badań nad niewykorzystaną wiedzą drzemiącą w repozytoriach kodu źródłowego. ",
+      "room": "Konfitura",
+      "start": "11:50",
+      "end": "12:40"
+    },
+    {
+      "title": "Type Driven Development",
+      "speakers": 
+      [
+        {
+          "firstName": "Maciek",
+          "lastName": "Próchniak",
+          "photo": "http://c4p.confitura.pl/files/speaker/126/me2.jpg"
+        }
+      ],
+      "description": "Każdy chyba wie (a przynajmniej powinien wiedzieć) o co chodzi w Test Driven Development.\n\nW językach z odpowiednio silnym systemem typów - takich jak Scala lub Haskell da się osiągnąć coś jeszcze. Kompilator może wykonywać część testów za nas. Często można usłyszeć argumenty w stylu: \"nie jestem w stanie wymyślić żadnych sensownych bugów, które mogą być wykryte przez kompilator\".\n\nChciałbym przedstawić kilka przykładów w Scali które (mam nadzieję) pokażą że to stwierdzenie nie jest prawdą - zaczynając od najprostszych, takich jak unikanie NullPointerException, a kończąc na eksperymentalnych próbach definiowania dość złożonych kontraktów jakie możemy znaleźć w takich bibliotekach jak Scalaz i Shapeless.\n\nBędę zakładał że słuchacze znają przynajmniej pobieżnie składnię Scali.",
+      "room": "Powidło",
+      "start": "09:30",
+      "end": "10:20"
+    },
+    {
+      "title": "Java performance tricks and traps",
+      "speakers": 
+      [
+        {
+          "firstName": "Michał",
+          "lastName": "Warecki",
+          "photo": null
+        }
+      ],
+      "description": "Ile razy Twoja aplikacja niedomagała nawet przy małej ilości użytkowników? Ile razy myślałeś, że dana optymalizacja kodu coś pomoże, a okazywało się, że jest zupełnie odwrotnie?\n\nJeśli chcesz poznać sztuczki i pułapki związane z wydajnością, ta prezentacja jest dla Ciebie.",
+      "room": "Konfitura",
+      "start": "16:00",
+      "end": "16:50"
+    },
+    {
+      "title": "Monitoring vs. profiling - benefits and pitfalls",
+      "speakers": 
+      [
+        {
+          "firstName": "Ingo",
+          "lastName": "Kegel",
+          "photo": "http://c4p.confitura.pl/files/speaker/25/cc1da0368f0874a66bd771c4d57f94b0.jpeg"
+        }
+      ],
+      "description": "Profilers are for development use and monitoring tools are used in production. Or is it really so clear-cut? What happens if your monitoring tool cannot help you to find a performance bottleneck or memory leak?\n\n In my talk I will discuss the overlap between profiling and monitoring and highlight the technical constraints that make profilers and monitoring tools different tool categories.\n\nBut coming from the profiler market and moving into the APM market, we wanted to build a bridge between both types of tools.",
+      "room": "Konfitura",
+      "start": "10:40",
+      "end": "11:30"
+    },
+    {
+      "title": "Innowacja w praktyce - jako może powstawać software w XXI wieku",
+      "speakers": 
+      [
+        {
+          "firstName": "Wojciech",
+          "lastName": "Seliga",
+          "photo": "http://c4p.confitura.pl/files/speaker/54/wseliga-2011-1x1.JPG"
+        }
+      ],
+      "description": "Wiele firm z branży software'owej boryka się z problemem innowacyjności - zwłaszcza po osiągnięciu dojrzałości i pewnego rozmiaru.\n\nInnowację trudno zmierzyć i ocenić ROI. Jednak jej brak oznacza prędzej czy później koniec firmy. Pojawiają się nawet rozpaczliwe wołania szefów wielkich firm: \"Innovation happens elsewhere\" - czy stwierdzenia, że dalsza innowacyjność może być utrzymywana wyłącznie przez kanibalizację - przejmowanie innych firm z branży, czego świadkami jesteśmy na co dzień. ",
+      "room": "Konfitura",
+      "start": "14:50",
+      "end": "15:40"
+    },
+    {
+      "title": "SOA w skali mikro - czyli architektura oparta na nanoserwisach",
+      "speakers": 
+      [
+        {
+          "firstName": "Sławomir",
+          "lastName": "Piotrowski",
+          "photo": "http://c4p.confitura.pl/files/speaker/23/conference_photo.png"
+        }
+      ],
+      "description": "Architektura zorientowana na usługi łączy elastyczność, rozszerzalność oraz wsteczną kompatybilność. Zapewnia dekompozycje aplikacji na niezależnie wdrażane, niezawodne mikroserwisy, które komunikują się poprzez standardowe protokoły internetowe. Natomiast pojęcie nanoserwisu zwykle przywoływane jest jako antywzorzeć - funkcjonalność, która jest zbyt mała, aby ubierać ją w ramy serwisu. W tej prezentacji chciałbym wprowadzić nową definicję nanoserwisu, jako podstawowego budulca aplikacji - łatwo testowalnego i elastycznego komponentu grupującego klasy. Przedstawię także Moonshine - gotową implementację kontenera nanoserwisów.",
+      "room": "Powidło",
+      "start": "10:40",
+      "end": "11:30"
+    },
+    {
+      "title": "Web application performance tuning beyond Xmx",
+      "speakers": 
+      [
+        {
+          "firstName": "Milen",
+          "lastName": "Dyankov",
+          "photo": "http://c4p.confitura.pl/files/speaker/64/MilenDyankov.png"
+        }
+      ],
+      "description": "Stop increasing Xmx - it will NOT help! Stop coping JVM settings from various blogs - they are not meant to be for you! \"Any fool can know. The point is to understand.\"? used to say Albert Einstein so this talk will try to help you understand your app so you can tune what needs to be tuned!",
+      "room": "Spiżarnia (2-gi budynek)",
+      "start": "09:30",
+      "end": "10:20"
+    },
+    {
+      "title": "Distributed (micro)services in hybrid environments",
+      "speakers": 
+      [
+        {
+          "firstName": "Mateusz",
+          "lastName": "Gajewski",
+          "photo": "http://c4p.confitura.pl/files/speaker/74/30728af.jpg"
+        }
+      ],
+      "description": "TBD",
+      "room": "Marmolada",
+      "start": "09:30",
+      "end": "10:20"
+    },
+    {
+      "title": "#StackOverflow, #GitHub i #twitter jako narzędzia rozwoju zawodowego programisty",
+      "speakers": 
+      [
+        {
+          "firstName": "Jacek",
+          "lastName": "Laskowski",
+          "photo": "http://c4p.confitura.pl/files/speaker/72/jacek_laskowski_2013_confitura.png"
+        }
+      ],
+      "description": "Pewnie nie raz słyszałaś nazwy StackOverflow, GitHub i twitter.   Pewnie nie raz zastanawiałeś się, czym mogłaś sobie zasłużyć musząc o nich w ogóle słyszeć?   Może nawet zastanawiałeś się, po co w ogóle o tych narzędziach wspominać?   I w końcu, choć raz mogło przez myśl przejść swego rodzaju zaciekawienie, czym tak na prawdę są wspomniane narzędzia (i czy w ogóle możnaby je nazwać narzędziami?)   Sporo tych pytań. Nie sądzisz, że warto znać odpowiedzi na kilka z nich?",
+
+      "room": "Dżem",
+      "start": "10:40",
+      "end": "11:30"
+    },
+    {
+      "title": "Sztuka uczenia się na błędach innych",
+      "speakers": 
+      [
+        {
+          "firstName": "Jakub",
+          "lastName": "Kubryński",
+          "photo": "http://c4p.confitura.pl/files/speaker/3/kuba.jpg"
+        }
+      ],
+      "description": "W prezentacji skupimy się na standardowych błędach, które towarzyszą programistom w trakcje realizacji projektów - a grzechów które możemy popełnić jest wiele. Przejdziemy przez wszystkie etapy poczynając od architektury, poprzez projektowanie komponentów a kończąc na regularnym developmencie. Przejdziemy przez ciekawe anty-wzorce, więc przygotujcie się na mnóstwo broni w postaci młotków i kul, potwory rzucające wielkimi kulami błota, erupcje wulkanów z wielkimi potokami lawy. Odpowiemy sobie także na pytanie, czemu te same sytuacje jedne zespoły prowadzą do sukcesu, jednocześnie dla innych będąc ścieżką prowadzącą do przepaści.",
+      "room": "Dżem",
+      "start": "11:50",
+      "end": "12:40"
+    },
+    {
+      "title": "TBD",
+      "speakers": 
+      [
+        {
+          "firstName": "Kapituła",
+          "lastName": null,
+          "photo": null
+        }
+      ],
+      "description": "TBD",
+      "room": "Powidło",
+      "start": "17:10",
+      "end": "18:00"
+    },
+    {
+      "title": "TBD",
+      "speakers": 
+      [
+        {
+          "firstName": "Kapituła",
+          "lastName": null,
+          "photo": null
+        }
+      ],
+      "description": "TBD",
+      "room": "Konfitura",
+      "start": "17:10",
+      "end": "18:00"
+    },
+    {
+      "title": "Tajniki współpracy z (trudnym) klientem",
+      "speakers": 
+      [
+        {
+          "firstName": "Kasia",
+          "lastName": "Mrowca",
+          "photo": "http://c4p.confitura.pl/files/speaker/15/a.jpg"
+        }
+      ],
+      "description": "O czym będzie?\n\n1. Ograniczenie \"apetytu\" czyli ustalenie wspólnego celu\n\n2. Techniki zbierania wymagań,\n\n3. Mock-upy nie tylko dla UXowców,\n\n4. Wizualizacja + schematy jako uniwersalny język,\n\n5. Co warto wiedzieć o komunikacji - czyli parę praktycznych wskazówek",
+      "room": "Spiżarnia (2-gi budynek)",
+      "start": "13:40",
+      "end": "14:30"
+    },
+    {
+      "title": "Object-Relational Mapping is the Vietnam of Computer Science",
+      "speakers": 
+      [
+        {
+          "firstName": "Michał",
+          "lastName": "Piotrkowski",
+          "photo": "http://c4p.confitura.pl/files/speaker/124/img_confitura.jpg"
+        }
+      ],
+      "description": "Każdy z nas, który programując w Javie musiał pracował z relacyjną bazą danych, wie jak ciężki jest to kawałek chleba. Na prezentacji dowiemy się, czym jest impedancja obiektowo-relacyjna (Object-Relational impedance mismatch) oraz dlaczego praca z relacyjną bazą danych jest taka trudna. Spróbujemy zastanowić się, dlaczego, pomimo wielu lat doświadczenia w korzystaniu z Hiberante/JPA, framework ciągle nas zaskakuje i nie daje spać po nocach. Rozłożymy Hibernate na czynniki pierwsze. Dowiemy się, dlaczego musimy poznać naszego wroga, żeby go pokonać... oraz co miał na myśli wujek Bob mówiąc, że “baza danych to szczegół implementacyjny”.",
+      "room": "Spiżarnia (2-gi budynek)",
+      "start": "11:50",
+      "end": "12:40"
+    },
+    {
+      "title": "Java in low latency world",
+      "speakers": 
+      [
+        {
+          "firstName": "Andrzej",
+          "lastName": "Michałowski",
+          "photo": "http://c4p.confitura.pl/files/speaker/22/fotka.JPG"
+        }
+      ],
+      "description": "W prezentacji poruszę bardzo drażliwy temat zastosowania języka Java, czy też innych języków wykorzystujących JVM, do aplikacji low-latency. Niestety dalej wszechobecny jest mit, że języki te są wolne i nie nadają się do zastosowań gdzie czas odpowiedzi jest w centrum uwagi. W takim razie dlaczego znajdują one tak dużo zastosowań w aplikacjach czasu rzeczywistego? Podczas prezentacji przedstawię kilka powodów takiego stanu rzeczy, opowiem krótko o aplikacjach low-latency oraz czym się charakteryzują. Tworzenie takich programów jest niezwykle wymagające, dlatego też wskażę na jakie problemy możemy się natknąć, podpowiem kilka narzędzi, które mogą pomóc w ich rozwiązaniu.\n\nW prezentacji poruszającej taką tematykę nie może oczywiście zabraknąć kilku słów o GC i podstawach jego działania. Opowiem też o zjawisku czkawki JVMa, czym ono jest, jak się objawia i jak je badać. Na zakończenie chciałbym opowiedzieć o tajemniczym C4, które jest niezwykle pomocny w rozwiązywaniu problemów.",
+      "room": "Powidło",
+      "start": "13:40",
+      "end": "14:30"
+    }
+  ]
+}

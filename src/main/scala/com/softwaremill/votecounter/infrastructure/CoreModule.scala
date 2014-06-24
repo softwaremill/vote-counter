@@ -3,11 +3,13 @@ package com.softwaremill.votecounter.infrastructure
 import com.softwaremill.macwire.Macwire
 import com.softwaremill.votecounter.config.VoteCounterConfig
 import com.typesafe.config.ConfigFactory
-import com.softwaremill.votecounter.h2.{TestDataPopulator, DBInitializer, SQLDatabase}
-import com.softwaremill.votecounter.db.{FlagDao, AppFlags, DeviceDao, VoteDao}
+import com.softwaremill.votecounter.h2.{ConferenceDataInitializer, TestDataPopulator, DBInitializer, SQLDatabase}
+import com.softwaremill.votecounter.db._
 import akka.actor.{Props, ActorSystem}
 import com.softwaremill.thegarden.lawn.shutdownables._
 import com.softwaremill.votecounter.web.VoteCounterWebService
+import com.softwaremill.votecounter.confitura.{ConfituraTalks, TalksProvider, RoomsProvider, ConfituraRooms}
+import com.softwaremill.votecounter.talks.AgendaFileReader
 
 
 trait ConfigModule {
@@ -21,21 +23,37 @@ trait DBModule extends Macwire with DefaultShutdownHandlerModule with ConfigModu
     db.close()
   }
 
-  lazy val voteDao = wire[VoteDao]
-  lazy val deviceDao = wire[DeviceDao]
-  lazy val flagDao = wire[FlagDao]
+  lazy val voteDao = wire[VotesDao]
+  lazy val deviceDao = wire[DevicesDao]
+  lazy val flagDao = wire[FlagsDao]
+  lazy val roomsDao = wire[RoomsDao]
+  lazy val talksDao = wire[TalksDao]
 
   lazy val dbInitializer = wire[DBInitializer]
 }
 
+trait AgendaModule extends Macwire {
+  lazy val agendaReader = wire[AgendaFileReader]
+}
+
+trait ConfituraModule extends Macwire with ConfigModule with AgendaModule {
+
+  lazy val roomsProvider: RoomsProvider = wire[ConfituraRooms]
+  lazy val talksProvider: TalksProvider = new ConfituraTalks(agendaReader,
+    config.conferenceDate, config.conferenceTimeZone)
+
+  lazy val agendaFileReader = wire[AgendaFileReader]
+}
+
 trait CoreModule extends Macwire with DefaultShutdownHandlerModule
-with ConfigModule with DBModule {
+with ConfigModule with DBModule with ConfituraModule {
 
   lazy val actorSystem = ActorSystem("vc-main") onShutdown { actorSystem =>
     actorSystem.shutdown()
     actorSystem.awaitTermination()
   }
 
+  lazy val conferenceDataInitializer = wire[ConferenceDataInitializer]
   lazy val testDataPopulator = wire[TestDataPopulator]
   lazy val flags = wire[AppFlags]
 
@@ -46,3 +64,4 @@ trait Beans extends CoreModule with ShutdownOnJVMTermination {
 }
 
 object Beans extends Beans
+

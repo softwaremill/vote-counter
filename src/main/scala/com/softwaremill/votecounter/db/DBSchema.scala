@@ -6,8 +6,8 @@ import org.joda.time.DateTime
 trait DBSchema {
   protected val database: SQLDatabase
 
-  import database.driver.simple._
   import database._
+  import database.driver.simple._
 
   val FlagTableName = "flags"
 
@@ -32,8 +32,10 @@ trait DBSchema {
 
     def name = column[String]("name", O.NotNull)
 
-    // Every table needs a * projection with the same type as the table's type parameter
+    // TODO add room id
+
     def * = (id.?, key, name) <>(Device.tupled, Device.unapply)
+
   }
 
   protected lazy val devices = TableQuery[Devices]
@@ -42,7 +44,7 @@ trait DBSchema {
 
   class Votes(tag: Tag) extends Table[Vote](tag, VotesTableName) {
 
-    def id = column[String]("vote_id", O.PrimaryKey)
+    def id = column[String]("vote_id", O.PrimaryKey, O.NotNull)
 
     def deviceId = column[Int]("device_id", O.NotNull)
 
@@ -57,4 +59,42 @@ trait DBSchema {
 
   protected lazy val votes = TableQuery[Votes]
 
+  val RoomsTableName = "Rooms"
+
+  class Rooms(tag: Tag) extends Table[Room](tag, RoomsTableName) {
+
+    def id = column[String]("room_id", O.PrimaryKey, O.NotNull)
+
+    def name = column[String]("name", O.NotNull)
+
+    override def * = (id, name) <>(Room.tupled, Room.unapply)
+  }
+
+  protected lazy val rooms = TableQuery[Rooms]
+
+  val TalksTableName = "Talks"
+
+  class Talks(tag: Tag) extends Table[Talk](tag, TalksTableName) {
+
+    def id = column[String]("talk_id", O.PrimaryKey, O.NotNull)
+
+    def roomId = column[String]("room_id", O.NotNull)
+
+    def title = column[String]("title", O.NotNull)
+
+    def startsAt = column[DateTime]("starts_at", O.NotNull)
+
+    def endsAt = column[DateTime]("ends_at", O.NotNull)
+
+    def overrideVoteStartAt = column[DateTime]("overrride_vote_starts_at", O.Nullable)
+
+    def overrideVoteEndsAt = column[DateTime]("override_vote_ends_at", O.Nullable)
+
+    override def * = (id, roomId, title, startsAt, endsAt, overrideVoteStartAt.?, overrideVoteEndsAt.?) <>(Talk.tupled, Talk.unapply)
+  }
+
+  protected lazy val talks = TableQuery[Talks]
+
 }
+
+

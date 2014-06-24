@@ -4,7 +4,7 @@ import com.softwaremill.votecounter.h2.SQLDatabase
 
 case class Flag(flagId: String, value: String)
 
-class FlagDao(val database: SQLDatabase) extends DBSchema {
+class FlagsDao(val database: SQLDatabase) extends DBSchema {
 
   import database.driver.simple._
   import database._

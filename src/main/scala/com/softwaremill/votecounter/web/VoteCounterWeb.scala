@@ -5,7 +5,7 @@ import akka.actor.{Actor, ActorSystem}
 import akka.io.IO
 import spray.can.Http
 import com.softwaremill.votecounter.infrastructure.Beans
-import com.softwaremill.votecounter.db.VoteDao
+import com.softwaremill.votecounter.db.VotesDao
 import spray.httpx.Json4sJacksonSupport
 import org.json4s.DefaultFormats
 import java.text.SimpleDateFormat
@@ -15,7 +15,7 @@ import org.json4s.ext.JodaTimeSerializers
 class VoteCounterWebService(beans: Beans) extends Actor with VoteService {
   implicit def actorRefFactory = context
 
-  override protected val voteDao: VoteDao = beans.voteDao
+  override protected val voteDao: VotesDao = beans.voteDao
 
   def receive = runRoute(voteRoute)
 
@@ -30,7 +30,7 @@ trait VoteService extends HttpService with Json4sJacksonSupport {
       new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
   } ++ JodaTimeSerializers.all
 
-  protected val voteDao: VoteDao
+  protected val voteDao: VotesDao
 
   def voteRoute = pathPrefix("votes") {
     path("") {
@@ -50,9 +50,12 @@ object VoteCounterWeb extends App with SimpleRoutingApp {
   val beans = Beans
   val dbInitializer = beans.dbInitializer
   val testDataPopulator = beans.testDataPopulator
+  val conferenceDataInitializer = beans.conferenceDataInitializer
 
   dbInitializer.initializeAndBlock()
+  conferenceDataInitializer.initializeAndBlock()
   testDataPopulator.populateWithTestData()
+  
 
   IO(Http) ! Http.Bind(beans.webHandler, interface = "localhost", port = 8080)
 }
