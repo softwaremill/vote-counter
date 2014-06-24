@@ -2,7 +2,7 @@ package com.softwaremill.votecounter.db
 
 import com.softwaremill.votecounter.h2.SQLDatabase
 
-case class Device(deviceId: Option[Int], key: String, name: String)
+case class Device(deviceId: Option[Int], key: String, name: String, roomId: String)
 
 class DevicesDao(val database: SQLDatabase) extends DBSchema {
 

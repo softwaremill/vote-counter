@@ -32,10 +32,11 @@ trait DBSchema {
 
     def name = column[String]("name", O.NotNull)
 
-    // TODO add room id
+    def roomId = column[String]("room_id", O.NotNull)
 
-    def * = (id.?, key, name) <>(Device.tupled, Device.unapply)
+    def * = (id.?, key, name, roomId) <>(Device.tupled, Device.unapply)
 
+    def room = foreignKey("room_id", roomId, rooms)(_.id)
   }
 
   protected lazy val devices = TableQuery[Devices]
