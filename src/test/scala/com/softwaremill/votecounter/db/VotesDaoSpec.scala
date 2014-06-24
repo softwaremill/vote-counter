@@ -2,40 +2,7 @@ package com.softwaremill.votecounter.db
 
 import org.scalatest._
 import com.softwaremill.votecounter.testutil.SQLSupport
-import com.softwaremill.votecounter.h2.SQLDatabase
 import org.joda.time.{DateTimeZone, DateTime}
-import scala.Some
-
-
-trait SmallConference extends BeforeAndAfterAll {
-
-  this: Suite =>
-
-  protected val sqlDatabase: SQLDatabase
-
-  private val roomsDao = new RoomsDao(sqlDatabase)
-  private val deviceDao = new DevicesDao(sqlDatabase)
-
-  protected val smallRoom = Room("small", "Small")
-  protected val largeRoom = Room("large", "Large")
-
-  protected val smallRoomDevice = Device(Some(1), "123", "small-d", smallRoom.roomId)
-  protected val largeRoomFirstDevice = Device(Some(2), "512", "large-d1", largeRoom.roomId)
-  protected val largeRoomSecondDevice = Device(Some(2), "768", "large-d2", largeRoom.roomId)
-
-  protected def initSmallConference() {
-    for (room <- Seq(smallRoom, largeRoom))
-      roomsDao.insert(room)
-
-    for (device <- Seq(smallRoomDevice, largeRoomFirstDevice, largeRoomSecondDevice))
-      deviceDao.insert(device)
-  }
-
-  override protected def beforeAll() = {
-    super.beforeAll()
-    initSmallConference()
-  }
-}
 
 class VotesDaoSpec extends FlatSpec with SQLSupport with ShouldMatchers with SmallConference with BeforeAndAfterEach {
 
