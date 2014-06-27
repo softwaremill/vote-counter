@@ -9,14 +9,14 @@ class TalksDaoSpec extends FlatSpec with ShouldMatchers with SQLSupport with Sma
   private val dao = new TalksDao(sqlDatabase)
 
   it should "support finding talks by room" in {
-    val byRoomId = dao.findAllByRoomId()
+    val byRoomId = dao.findAllByRoom()
 
-    byRoomId(smallRoom.roomId).length shouldEqual 1
-    byRoomId(largeRoom.roomId).length shouldEqual 1
+    byRoomId(smallRoom).length shouldEqual 1
+    byRoomId(largeRoom).length shouldEqual 1
 
     val boringTalkWithUTCDateTimes = boringTalk.copy(startsAt = boringTalk.startsAt.withZone(DateTimeZone.UTC),
       endsAt = boringTalk.endsAt.withZone(DateTimeZone.UTC))
 
-    byRoomId(smallRoom.roomId) should contain(boringTalkWithUTCDateTimes)
+    byRoomId(smallRoom) should contain(boringTalkWithUTCDateTimes)
   }
 }

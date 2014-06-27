@@ -9,7 +9,7 @@ case class Talk(talkId: String, roomId: String, title: String,
 
 object Talk extends ((String, String, String, DateTime, DateTime, Option[DateTime], Option[DateTime]) => Talk) {
   def apply(talkId: String, roomId: String, title: String,
-            startsAt: DateTime, endsAt: DateTime) : Talk =
+            startsAt: DateTime, endsAt: DateTime): Talk =
     Talk(talkId, roomId, title, startsAt, endsAt, None, None)
 
 
@@ -26,9 +26,12 @@ class TalksDao(protected val database: SQLDatabase) extends DBSchema {
     }
   }
 
-  def findAllByRoomId() = {
+  def findAllByRoom(): Map[Room, List[Talk]] = {
     db.withSession { implicit session =>
-      talks.list.groupBy(_.roomId)
+      val byRoomId = talks.list.groupBy(_.roomId)
+      val roomsDict: Map[String, Room] = rooms.list.map(room => (room.roomId, room)).toMap
+
+      byRoomId.map { case (roomId, talk) => (roomsDict(roomId), talk)}
     }
   }
 

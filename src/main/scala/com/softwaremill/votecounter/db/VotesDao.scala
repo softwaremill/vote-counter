@@ -55,7 +55,7 @@ class VotesDao(val database: SQLDatabase) extends DBSchema {
     }
   }
 
-  private[db] def truncate() = {
+  def truncate() = {
     db.withSession { implicit session =>
       votes.delete
     }

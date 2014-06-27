@@ -4,10 +4,6 @@ import org.scalatest.{Suite, BeforeAndAfterAll}
 import com.softwaremill.votecounter.h2.SQLDatabase
 import org.joda.time.DateTime
 
-/**
- * @author Maciej Bilas
- * @since 24/6/14 17:26
- */
 trait SmallConference extends BeforeAndAfterAll {
 
   this: Suite =>
