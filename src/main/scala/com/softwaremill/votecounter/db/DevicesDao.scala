@@ -15,6 +15,12 @@ class DevicesDao(val database: SQLDatabase) extends DBSchema {
     }
   }
 
+  def findByKey(key: String): Option[Device] = {
+    db.withSession { implicit session =>
+      devices.filter(_.key === key).firstOption
+    }
+  }
+
   def insert(device: Device) = {
     db.withSession { implicit session =>
       devices.insert(device)

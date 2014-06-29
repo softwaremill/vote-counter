@@ -2,6 +2,7 @@ package com.softwaremill.votecounter.infrastructure
 
 import com.softwaremill.macwire.Macwire
 import com.softwaremill.votecounter.config.VoteCounterConfig
+import com.softwaremill.votecounter.voting.{VotingResultAggregator, VoteRequestProcessor}
 import com.typesafe.config.ConfigFactory
 import com.softwaremill.votecounter.h2.{ConferenceDataInitializer, TestDataPopulator, DBInitializer, SQLDatabase}
 import com.softwaremill.votecounter.db._
@@ -31,21 +32,25 @@ trait DBModule extends Macwire with DefaultShutdownHandlerModule with ConfigModu
   lazy val dbInitializer = wire[DBInitializer]
 }
 
-trait AgendaModule extends Macwire {
-  lazy val agendaReader = wire[AgendaFileReader]
-}
-
-trait ConfituraModule extends Macwire with ConfigModule with AgendaModule {
+trait ConfituraModule extends Macwire with ConfigModule {
 
   lazy val roomsProvider: RoomsProvider = wire[ConfituraRooms]
-  lazy val talksProvider: TalksProvider = new ConfituraTalks(agendaReader,
+  lazy val talksProvider: TalksProvider = new ConfituraTalks(agendaFileReader,
     config.conferenceDate, config.conferenceTimeZone)
 
   lazy val agendaFileReader = wire[AgendaFileReader]
 }
 
+trait VotesModule extends Macwire with DBModule {
+
+  lazy val votesRequestProcessor = wire[VoteRequestProcessor]
+
+  lazy val votingResultAggregator = wire[VotingResultAggregator]
+
+}
+
 trait CoreModule extends Macwire with DefaultShutdownHandlerModule
-with ConfigModule with DBModule with ConfituraModule {
+with ConfigModule with DBModule with ConfituraModule with VotesModule {
 
   lazy val actorSystem = ActorSystem("vc-main") onShutdown { actorSystem =>
     actorSystem.shutdown()

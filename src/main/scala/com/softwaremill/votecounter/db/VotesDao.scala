@@ -22,7 +22,7 @@ class VotesDao(val database: SQLDatabase) extends DBSchema {
     }
   }
 
-  def insertIfNew(vote: Vote) = {
+  def insertIfNew(vote: Vote) : Vote = {
     db.withTransaction { implicit session =>
       val voteInDbOpt = votes.filter(_.id === vote.id).firstOption
       if (voteInDbOpt.isEmpty) {

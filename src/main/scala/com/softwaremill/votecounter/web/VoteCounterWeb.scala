@@ -1,5 +1,6 @@
 package com.softwaremill.votecounter.web
 
+import com.softwaremill.votecounter.voting.{VoteRequestProcessor, VoteRequest}
 import spray.routing.{HttpService, SimpleRoutingApp}
 import akka.actor.{Actor, ActorSystem}
 import akka.io.IO
@@ -17,6 +18,8 @@ class VoteCounterWebService(beans: Beans) extends Actor with VoteService {
 
   override protected val voteDao: VotesDao = beans.voteDao
 
+  override protected val voteRequestProcessor: VoteRequestProcessor = beans.votesRequestProcessor
+
   def receive = runRoute(voteRoute)
 
 }
@@ -32,13 +35,23 @@ trait VoteService extends HttpService with Json4sJacksonSupport {
 
   protected val voteDao: VotesDao
 
+  protected val voteRequestProcessor: VoteRequestProcessor
+
   def voteRoute = pathPrefix("votes") {
     path("") {
       get {
         complete {
           voteDao.findAll()
         }
-      }
+      } ~
+        post {
+          entity(as[VoteRequest]) { voteRequest =>
+            complete {
+              voteRequestProcessor.processRequest(voteRequest)
+              "OK"
+            }
+          }
+        }
     }
   }
 
@@ -55,7 +68,7 @@ object VoteCounterWeb extends App with SimpleRoutingApp {
   dbInitializer.initializeAndBlock()
   conferenceDataInitializer.initializeAndBlock()
   testDataPopulator.populateWithTestData()
-  
+
 
   IO(Http) ! Http.Bind(beans.webHandler, interface = "localhost", port = 8080)
 }
