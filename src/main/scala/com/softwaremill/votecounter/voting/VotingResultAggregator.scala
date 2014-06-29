@@ -1,12 +1,9 @@
 package com.softwaremill.votecounter.voting
 
-import scala.language.implicitConversions
-
 import com.softwaremill.votecounter.db._
 import org.joda.time.{DateTime, Interval, Period}
-import scala.Some
-import com.softwaremill.votecounter.db.Vote
-import com.softwaremill.votecounter.db.Room
+
+import scala.language.implicitConversions
 
 case class VotingResults(talkVotingResults: Seq[TalkVotingResults], unclassifiedVotes: Seq[Vote],
                          positiveVotes: Int, negativeVotes: Int) {
@@ -98,7 +95,7 @@ class VotingResultAggregator(talksDao: TalksDao, votesDao: VotesDao) {
 
 private[voting] case class TalkWithVoteTimes(talk: Talk) {
 
-  import VotingResultAggregator.{VoteWindowStartOffset, VoteWindowEndOffset}
+  import com.softwaremill.votecounter.voting.VotingResultAggregator.{VoteWindowEndOffset, VoteWindowStartOffset}
 
   def voteStartsAt: DateTime = {
     talk.overrideVoteStartsAt match {
