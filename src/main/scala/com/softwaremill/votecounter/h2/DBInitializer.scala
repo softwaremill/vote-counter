@@ -1,29 +1,22 @@
 package com.softwaremill.votecounter.h2
 
+import com.softwaremill.votecounter.confitura.{DevicesProvider, RoomsProvider, TalksProvider}
 import com.softwaremill.votecounter.db._
-import scala.slick.jdbc.meta.MTable
-import org.joda.time.DateTime
-import com.softwaremill.votecounter.db.Vote
-import com.softwaremill.votecounter.db.Device
-import scala.Some
 import com.softwaremill.votecounter.infrastructure.AppFlags
-import com.softwaremill.votecounter.confitura.{TalksProvider, RoomsProvider}
+import org.joda.time.DateTime
+
+import scala.slick.jdbc.meta.MTable
 
 
-class TestDataPopulator(deviceDao: DevicesDao, voteDao: VotesDao, appFlags: AppFlags) {
+class TestDataPopulator(voteDao: VotesDao, appFlags: AppFlags) {
 
   def populateWithTestData() {
     if (!appFlags.isTestDataInserted) {
-      val devices = Seq(Device(key = "123", name = "foo", deviceId = Some(1), roomId = "dzem"))
-
       val votes = Seq(
         Vote(positive = true, castedAt = DateTime.now().minusDays(1), deviceId = 1, id = "123"),
         Vote(positive = true, castedAt = DateTime.now().minusDays(2), deviceId = 1, id = "311"),
         Vote(positive = false, castedAt = DateTime.now().minusDays(3), deviceId = 1, id = "41a")
       )
-
-      for (device <- devices)
-        deviceDao.insert(device)
 
       for (vote <- votes)
         voteDao.insert(vote)
@@ -34,15 +27,26 @@ class TestDataPopulator(deviceDao: DevicesDao, voteDao: VotesDao, appFlags: AppF
 }
 
 class ConferenceDataInitializer(roomsProvider: RoomsProvider, roomsDao: RoomsDao,
-                                talksProvider: TalksProvider, talksDao: TalksDao) {
+                                talksProvider: TalksProvider, talksDao: TalksDao,
+                                devicesProvider: DevicesProvider, devicesDao: DevicesDao,
+                                appFlags: AppFlags) {
 
   def initializeAndBlock() {
-    for (room <- roomsProvider.rooms) {
-      roomsDao.insert(room)
-    }
+    if (!appFlags.isConferenceDataInitialized) {
 
-    for (talk <- talksProvider.talks) {
-      talksDao.insert(talk)
+      for (room <- roomsProvider.rooms) {
+        roomsDao.insert(room)
+      }
+
+      for (talk <- talksProvider.talks) {
+        talksDao.insert(talk)
+      }
+
+      for (device <- devicesProvider.devices) {
+        devicesDao.insert(device)
+      }
+
+      appFlags.flagConferenceDataInserted()
     }
   }
 }

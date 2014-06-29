@@ -2,3 +2,6 @@ data
 DS_Store
 .idea
 target
+
+# Contains device keys
+src/main/resources/devices.json

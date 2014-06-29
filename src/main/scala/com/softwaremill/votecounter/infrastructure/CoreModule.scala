@@ -33,12 +33,12 @@ trait DBModule extends Macwire with DefaultShutdownHandlerModule with ConfigModu
 }
 
 trait ConfituraModule extends Macwire with ConfigModule {
+  lazy val agendaFileReader = wire[AgendaFileReader]
 
   lazy val roomsProvider: RoomsProvider = wire[ConfituraRooms]
   lazy val talksProvider: TalksProvider = new ConfituraTalks(agendaFileReader,
     config.conferenceDate, config.conferenceTimeZone)
-
-  lazy val agendaFileReader = wire[AgendaFileReader]
+  lazy val devicesProvider: DevicesProvider = wire[ConfituraDevices]
 }
 
 trait VotesModule extends Macwire with DBModule {

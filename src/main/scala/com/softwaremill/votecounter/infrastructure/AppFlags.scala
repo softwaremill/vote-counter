@@ -16,10 +16,14 @@ class AppFlags(flagDao: FlagsDao) {
 
   def isTestDataInserted = isBooleanFlagSet(TestDataInserted)
 
-  def isConferenceDataInitialized = isBooleanFlagSet(ConferenceDataInitialized)
-
   def flagTestDataInserted() = {
     flagDao.set(Flag(TestDataInserted, "true"))
+  }
+
+  def isConferenceDataInitialized = isBooleanFlagSet(ConferenceDataInitialized)
+
+  def flagConferenceDataInserted() = {
+    flagDao.set(Flag(ConferenceDataInitialized, "true"))
   }
 
 }
