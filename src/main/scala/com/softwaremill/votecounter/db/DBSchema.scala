@@ -37,6 +37,9 @@ trait DBSchema {
     def * = (id.?, key, name, roomId) <>(Device.tupled, Device.unapply)
 
     def room = foreignKey("room_id", roomId, rooms)(_.id)
+
+    // http://blog.lunatech.com/2013/08/21/slick-column-definitions
+    def uniqueKey = index("idx_key", key, unique = true)
   }
 
   protected lazy val devices = TableQuery[Devices]
