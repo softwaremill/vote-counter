@@ -26,7 +26,7 @@ class VoteCounterWebService(beans: Beans) extends Actor with VoteService {
 
 }
 
-case class IntHolder(number: Int)
+
 
 trait VoteService extends HttpService with Json4sJacksonSupport {
 
