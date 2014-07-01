@@ -78,5 +78,5 @@ object VoteCounterWeb extends App with SimpleRoutingApp {
   dbInitializer.initializeAndBlock()
   conferenceDataInitializer.initializeAndBlock()
 
-  IO(Http) ! Http.Bind(beans.webHandler, interface = "localhost", port = 8080)
+  IO(Http) ! Http.Bind(beans.webHandler, interface = "0.0.0.0", port = 8080)
 }
