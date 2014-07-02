@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 import com.softwaremill.votecounter.db.Device
-import com.softwaremill.votecounter.util.InputStreams
+import com.softwaremill.votecounter.util.Resources
 import org.json4s.DefaultFormats
 import org.json4s.ext.JodaTimeSerializers
 import org.json4s.jackson.JsonMethods._
@@ -25,5 +25,5 @@ class ConfituraDevices extends DevicesProvider {
   override val devices = parseDeviceJson("devices.json")
 
   private[confitura] def parseDeviceJson(resource: String) =
-    parse(InputStreams.inClasspath(resource)).extract[Seq[Device]]
+    parse(Resources.inputStreamInClasspath(resource)).extract[Seq[Device]]
 }

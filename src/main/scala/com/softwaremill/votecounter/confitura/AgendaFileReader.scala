@@ -4,7 +4,7 @@ import org.joda.time.LocalTime
 import java.text.{Normalizer, SimpleDateFormat}
 import java.util.Locale
 import scala.io.Source
-import com.softwaremill.votecounter.util.InputStreams
+import com.softwaremill.votecounter.util.Resources
 import org.json4s.{JsonAST, CustomSerializer}
 import org.json4s.JsonAST.{JObject, JString}
 import java.text.Normalizer.Form
@@ -72,7 +72,7 @@ class AgendaFileReader {
   def read(): Agenda =
     parseJson(
       Source.fromInputStream(
-        InputStreams.inClasspath(AgendaFilePath)
+        Resources.inputStreamInClasspath(AgendaFilePath)
       ).getLines().mkString("\n"))
 
 }

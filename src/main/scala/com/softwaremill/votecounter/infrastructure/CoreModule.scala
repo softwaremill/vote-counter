@@ -8,7 +8,7 @@ import com.softwaremill.votecounter.h2.{ConferenceDataInitializer, TestDataPopul
 import com.softwaremill.votecounter.db._
 import akka.actor.{Props, ActorSystem}
 import com.softwaremill.thegarden.lawn.shutdownables._
-import com.softwaremill.votecounter.web.VoteCounterWebService
+import com.softwaremill.votecounter.web.{SslServer, VoteCounterWebService}
 import com.softwaremill.votecounter.confitura._
 
 
@@ -64,7 +64,9 @@ with ConfigModule with DBModule with ConfituraModule with VotesModule {
 }
 
 trait Beans extends CoreModule with ShutdownOnJVMTermination {
-  val webHandler = actorSystem.actorOf(Props(classOf[VoteCounterWebService], this), "vote-service")
+  lazy val webHandler = actorSystem.actorOf(Props(classOf[VoteCounterWebService], this), "vote-service")
+
+  lazy val sslServer = new SslServer(webHandler, config, actorSystem)
 }
 
 object Beans extends Beans
