@@ -14,7 +14,7 @@ trait BaseConfig extends ConfigWithDefaults {
   lazy val embeddedDataDir = getString("vote-counter.db.data-dir", "./data")
 
   val sslKeystorePassword : Option[String] = getOptionalString(SslKeystorePasswordKey)
-  val sslEnabled : Boolean = getBoolean("ssl.enabled", default = false)
+  val sslEnabled : Boolean = getBoolean("vote-counter.web.ssl-enabled", default = false)
 }
 
 object BaseConfig {
