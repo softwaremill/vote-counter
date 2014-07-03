@@ -3,8 +3,35 @@
 <head>
     <meta charset="utf-8">
     <title>Confitura 2014 charts</title>
+    <script src="/scripts/d3.js" type="application/javascript"></script>
+    <script src="/scripts/rickshaw.js" type="application/javascript"></script>
+    <link href="/styles/rickshaw.css" type="text/css">
 </head>
 <body>
 <!-- page content -->
+
+<div id="chart"></div>
+
+<script>
+
+    var graph = new Rickshaw.Graph( {
+        element: document.querySelector("#chart"),
+        width: 300,
+        height: 200,
+        series: [{
+            color: 'steelblue',
+            data: [
+                { x: 0, y: 40 },
+                { x: 1, y: 49 },
+                { x: 2, y: 38 },
+                { x: 3, y: 30 },
+                { x: 4, y: 32 } ]
+        }]
+    });
+
+    graph.render();
+
+</script>
+
 </body>
 </html>

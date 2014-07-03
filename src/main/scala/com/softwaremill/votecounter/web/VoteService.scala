@@ -47,11 +47,11 @@ trait VoteService extends HttpService with Json4sJacksonSupport with WebappPathD
         }
       }
 
-  def staticContentRoute = path("charts") {
+  def staticContentRoute = (path("charts") | path("")) {
     getWebappFile("index.html")
-  } ~ path("scripts") {
+  } ~ pathPrefix("scripts") {
     getWebappDirectory("scripts")
-  } ~ path("styles") {
+  } ~ pathPrefix("styles") {
     getWebappDirectory("styles")
   }
 
