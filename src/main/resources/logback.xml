@@ -11,10 +11,14 @@
     </appender>
 
     <logger name="com.softwaremill" level="DEBUG" additivity="FALSE">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="spray" level="DEBUG" additivity="TRUE">
+        <appender-ref std="STDOUT"/>
     </logger>
 
     <root level="INFO">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>

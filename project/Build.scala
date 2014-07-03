@@ -50,7 +50,8 @@ object Dependencies {
   val akkaVersion = "2.3.3"
   val akkaActors = "com.typesafe.akka" %% "akka-actor" % akkaVersion
   val akkaTestKit = "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test"
-  val akka = Seq(akkaActors, akkaTestKit)
+  val akkaSlf4j =  "com.typesafe.akka" %% "akka-slf4j" % akkaVersion
+  val akka = Seq(akkaActors, akkaSlf4j, akkaTestKit)
 
   val h2 = "com.h2database" % "h2" % "1.3.175"
   val c3p0 = "com.mchange" % "c3p0" % "0.9.5-pre6"
