@@ -15,6 +15,7 @@ trait BaseConfig extends ConfigWithDefaults {
 
   val sslKeystorePassword : Option[String] = getOptionalString(SslKeystorePasswordKey)
   val sslEnabled : Boolean = getBoolean("vote-counter.web.ssl-enabled", default = false)
+  val webCacheFiles : Boolean = getBoolean("vote-counter.web.cache-files", default = true)
 }
 
 object BaseConfig {
