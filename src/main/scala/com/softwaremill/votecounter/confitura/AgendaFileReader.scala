@@ -87,7 +87,7 @@ case class Agenda(version: String, talks: Seq[TalkData]) {
 
   private[confitura] def verifyUniqueTalkIds() = {
     val duplicateTalksIds = findDuplicateTalksIds
-    if (!duplicateTalksIds.isEmpty) {
+    if (duplicateTalksIds.nonEmpty) {
       throw new IllegalStateException("Found following duplicate talk ids: " +
         s"${duplicateTalksIds.mkString(",")}.")
     }
@@ -104,7 +104,9 @@ case class TalkData(title: String, description: String, room: String, start: Loc
   private def underscore(s: String) =
     removeAccents(s).toLowerCase.replaceAll(" ", "_").replaceAll("[^a-z0-9_]", "")
 
-  def talkId: String = if (title != "TBD") {
+  private def isTitleInvalid = title == "TBD" || title.startsWith("???")
+
+  def talkId: String = if (!isTitleInvalid) {
     underscore(title)
   } else {
     underscore(s"${roomId}_${start.getHourOfDay}_${start.getMinuteOfHour}")

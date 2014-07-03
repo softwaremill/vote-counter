@@ -9,7 +9,7 @@ class AgendaFileReaderSpec extends FlatSpec with ShouldMatchers with LazyLogging
 
   it should "read and parse the agenda3.json file" in {
 
-    agenda.version shouldEqual "1.1.27"
+    agenda.version shouldEqual "1.30.2"
   }
 
   it should "have more than 10 talks (sanity check)" in {
