@@ -63,7 +63,8 @@ private[voting] object IntermediateVotingResults {
 
 class VotingResultAggregator(talksDao: TalksDao, votesDao: VotesDao) {
 
-  def aggregateAllVotes = aggregateVotesForTalks(votesDao.findAllByRoom(), talksDao.findAllByRoom())
+  def aggregateAllVotes : VotingResults =
+    aggregateVotesForTalks(votesDao.findAllByRoom(), talksDao.findAllByRoom())
 
   def aggregateVotesForTalks(votesMap: Map[Room, List[Vote]], talksMap: Map[Room, List[Talk]]) = {
     val votesMapWithDefault = votesMap.withDefaultValue(Nil)
