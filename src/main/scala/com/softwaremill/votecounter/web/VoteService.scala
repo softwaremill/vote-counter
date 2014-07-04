@@ -23,7 +23,7 @@ trait VoteService extends HttpService with Json4sJacksonSupport with WebappPathD
 
   protected val votingResultAggregator: VotingResultAggregator
 
-  def voteRoute =
+  protected def voteRoute =
     path("votes") {
       get {
         complete {
@@ -38,21 +38,24 @@ trait VoteService extends HttpService with Json4sJacksonSupport with WebappPathD
             }
           }
         }
-    } ~
-      path("results") {
-        get {
-          complete {
-            votingResultAggregator.aggregateAllVotes
-          }
-        }
-      }
+    }
 
-  def staticContentRoute = (path("charts") | path("")) {
+  protected def resultsRoute = path("results") {
+    get {
+      complete {
+        votingResultAggregator.aggregateAllVotes
+      }
+    }
+  }
+
+  protected def staticContentRoute = (path("charts") | path("")) {
     getWebappFile("index.html")
   } ~ pathPrefix("scripts") {
     getWebappDirectory("scripts")
   } ~ pathPrefix("styles") {
     getWebappDirectory("styles")
   }
+
+  protected def voteServiceRoutes = voteRoute ~ resultsRoute ~ staticContentRoute
 
 }

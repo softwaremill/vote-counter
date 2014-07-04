@@ -20,7 +20,7 @@ class VoteCounterWebService(beans: Beans) extends Actor with VoteService {
 
   override protected val cacheFiles = beans.config.webCacheFiles
 
-  def receive = runRoute(voteRoute ~ staticContentRoute)
+  def receive = runRoute(voteServiceRoutes)
 
 }
 
