@@ -3,43 +3,91 @@
 <head>
     <meta charset="utf-8">
     <title>Confitura 2014 charts</title>
-    <script src="/scripts/jquery.js" type="application/javascript"></script>
-    <script src="/scripts/d3.js" type="application/javascript"></script>
-    <script src="/scripts/rickshaw.js" type="application/javascript"></script>
-    <link href="/styles/rickshaw.css" type="text/css">
+    <link href="/styles/rickshaw.css" type="text/css" rel="stylesheet">
+    <link href="/styles/graph.css" type="text/css" rel="stylesheet">
+
+    <script src="/scripts/jquery.js"></script>
+    <script src="/scripts/d3.js"></script>
+    <script src="/scripts/rickshaw.js"></script>
+
+
+    <style>
+        #chart {
+            position: relative;
+            left: 40px;
+        }
+
+        #y_axis {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 40px;
+        }
+        #x_axis {
+            position: relative;
+            left: 40px;
+            height: 40px;
+        }
+    </style>
 </head>
 <body>
 <!-- page content -->
 
-<div id="chart"></div>
+
+<div id="chart_container">
+    <div id="y_axis"></div>
+    <div id="chart"></div>
+    <div id="x_axis"></div>
+</div>
+
 
 <script>
 
-    var ajax
+    // color palette http://www.colourlovers.com/palette/7373/shot_down
 
-    var graph = new Rickshaw.Graph({
-        element: document.querySelector("#chart"),
-        renderer: 'bar',
-        stack: false,
-        series: [
-            {
-                data: [
-                    { x: 0, y: 40 },
-                    { x: 1, y: 49 }
-                ],
-                color: 'steelblue'
-            },
-            {
-                data: [
-                    { x: 0, y: 20 },
-                    { x: 1, y: 24 }
-                ],
-                color: 'lightblue'
+    function renderGraphs(series) {
+        var rickshawGraphData = {
+            element: document.getElementById("chart"),
+            renderer: 'bar',
+            stack: false,
+            series: series.series
+        };
+
+        var graph = new Rickshaw.Graph(rickshawGraphData);
+
+        var y_ticks = new Rickshaw.Graph.Axis.Y({
+            graph: graph,
+            orientation: 'left',
+            tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+            element: document.getElementById('y_axis')
+        });
+
+        var ticksTicks = function(tick) {
+            var ticksMap = {
+                0: 'talk 1',
+                1: 'talk 2',
+                2: ''
             }
-        ]
-    });
+            return ticksMap[tick];
+        }
 
-    graph.render();
+        var x_ticks = new Rickshaw.Graph.Axis.X( {
+            graph: graph,
+            orientation: 'bottom',
+            element: document.getElementById('x_axis'),
+            pixelsPerTick: 200,
+            tickFormat: ticksTicks
+        } );
+
+
+        graph.render();
+    }
+
+    var seriesFromAjax = $.ajax({url: '/stubs/data.json', beforeSend: function (xhr) {
+        xhr.overrideMimeType("applicatin/json; charset=utf-8");
+    }}).done(function (data) {
+        renderGraphs(data);
+    });
 
 </script>
 
