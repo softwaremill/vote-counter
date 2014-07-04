@@ -47,7 +47,7 @@ trait WebappPathDirectives extends ForwardingJarOrFileResolver with HttpService 
   }
 
   object FileResolver extends JarOrFileResolver {
-    private val FilePathPrefix = "/Users/maciejb/Development/vote-counter/web/webapp"
+    private val FilePathPrefix = "web/webapp"
 
     implicit val routingSettings = RoutingSettings.default.copy(fileGetConditional = cacheFiles)
 
