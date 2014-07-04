@@ -17,9 +17,9 @@ class VoteRequestProcessor(voteDao: VotesDao, devicesDao: DevicesDao) extends La
       case Some(device) =>
         val vote = request.toVote(device.deviceId.get)
         if (voteDao.insertIfNew(vote) == vote) {
-          logger.info(s"Registered duplicate vote: $vote.")
-        } else {
           logger.info(s"Registered new vote: $vote.")
+        } else {
+          logger.info(s"Rejected duplicate vote: $vote.")
         }
       case None =>
         logger.warn(s"Received vote request from unidentified device: $request.")
