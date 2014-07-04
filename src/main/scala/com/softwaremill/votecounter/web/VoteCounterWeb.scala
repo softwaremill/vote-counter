@@ -5,10 +5,8 @@ import akka.io.IO
 import com.softwaremill.votecounter.db.VotesDao
 import com.softwaremill.votecounter.infrastructure.Beans
 import com.softwaremill.votecounter.voting.{VoteRequestProcessor, VotingResultAggregator}
-import com.typesafe.config.ConfigFactory
 import com.typesafe.scalalogging.slf4j.StrictLogging
 import spray.can.Http
-import spray.can.server.ServerSettings
 import spray.routing.SimpleRoutingApp
 
 class VoteCounterWebService(beans: Beans) extends Actor with VoteService {
@@ -33,7 +31,6 @@ object VoteCounterWeb extends App with SimpleRoutingApp with StrictLogging {
   beans.dbInitializer.initializeAndBlock()
   beans.conferenceDataInitializer.initializeAndBlock()
 
-  val sslConfig = ServerSettings(ConfigFactory.defaultReference(getClass.getClassLoader)).copy()
   IO(Http) ! Http.Bind(beans.webHandler, interface = "0.0.0.0", port = 8080)
 
   beans.sslServer.start()
