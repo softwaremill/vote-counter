@@ -50,7 +50,7 @@ object Dependencies {
   val akkaVersion = "2.3.3"
   val akkaActors = "com.typesafe.akka" %% "akka-actor" % akkaVersion
   val akkaTestKit = "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test"
-  val akkaSlf4j =  "com.typesafe.akka" %% "akka-slf4j" % akkaVersion
+  val akkaSlf4j = "com.typesafe.akka" %% "akka-slf4j" % akkaVersion
   val akka = Seq(akkaActors, akkaSlf4j, akkaTestKit)
 
   val h2 = "com.h2database" % "h2" % "1.3.175"
@@ -61,7 +61,13 @@ object Dependencies {
 
   val dbStack = Seq(h2, c3p0, slick, flyway)
 
-  lazy val commonDependencies = logging ++ macwire ++ httpStack ++ akka ++ dbStack ++ garden
+  lazy val scalaCsv = "com.github.tototoshi" %% "scala-csv" % "1.0.0"
+
+  lazy val commonDependencies = logging ++ macwire ++ httpStack ++ akka ++ dbStack ++ garden ++
+    Seq(
+      scalaCsv
+    )
+
 }
 
 object VoteCounterBuild extends Build {
@@ -113,6 +119,6 @@ object VoteCounterBuild extends Build {
         base =>
           Seq(base / "web")
       }
-//      webappResources in Compile := Seq(baseDirectory.value / "web" / "webapp")
+      //      webappResources in Compile := Seq(baseDirectory.value / "web" / "webapp")
     )
 }
