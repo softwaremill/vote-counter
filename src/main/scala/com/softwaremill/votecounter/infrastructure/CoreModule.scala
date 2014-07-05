@@ -2,7 +2,7 @@ package com.softwaremill.votecounter.infrastructure
 
 import com.softwaremill.macwire.Macwire
 import com.softwaremill.votecounter.config.VoteCounterConfig
-import com.softwaremill.votecounter.voting.{VoteCountsAggregator, VotingResultAggregator, VoteRequestProcessor}
+import com.softwaremill.votecounter.voting.{ResultsToCsvTransformer, VoteCountsAggregator, VotingResultAggregator, VoteRequestProcessor}
 import com.typesafe.config.ConfigFactory
 import com.softwaremill.votecounter.h2.{ConferenceDataInitializer, TestDataPopulator, DBInitializer, SQLDatabase}
 import com.softwaremill.votecounter.db._
@@ -49,6 +49,7 @@ trait VotesModule extends Macwire with DBModule {
 
   lazy val voteCountsAggregator = wire[VoteCountsAggregator]
 
+  lazy val resultsToCsvTransformer = wire[ResultsToCsvTransformer]
 }
 
 trait CoreModule extends Macwire with DefaultShutdownHandlerModule

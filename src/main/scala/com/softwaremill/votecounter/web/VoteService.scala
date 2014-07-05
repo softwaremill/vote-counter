@@ -4,9 +4,10 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 import com.softwaremill.votecounter.db.VotesDao
-import com.softwaremill.votecounter.voting.{VoteCountsAggregator, VoteRequest, VoteRequestProcessor, VotingResultAggregator}
+import com.softwaremill.votecounter.voting._
 import org.json4s.DefaultFormats
 import org.json4s.ext.JodaTimeSerializers
+import spray.http._
 import spray.httpx.Json4sJacksonSupport
 import spray.routing.HttpService
 
@@ -24,6 +25,8 @@ trait VoteService extends HttpService with Json4sJacksonSupport with WebappPathD
   protected val votingResultAggregator: VotingResultAggregator
 
   protected val voteCountsAggregator: VoteCountsAggregator
+
+  protected val resultsToCsvTransformer: ResultsToCsvTransformer
 
   protected def voteRoute =
     path("votes") {
@@ -46,6 +49,15 @@ trait VoteService extends HttpService with Json4sJacksonSupport with WebappPathD
           complete {
             voteCountsAggregator.computeCounts()
           }
+        }
+      }
+    } ~ path("results.csv") {
+      get {
+        complete {
+          HttpResponse(StatusCodes.OK,
+            HttpEntity(ContentType(MediaTypes.`text/csv`),
+              resultsToCsvTransformer.allResultsAsCsv)
+          )
         }
       }
     }
