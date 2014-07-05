@@ -9,6 +9,7 @@ import com.softwaremill.votecounter.web.{VoteCounterWebService, VoteService}
 import com.typesafe.scalalogging.slf4j.StrictLogging
 import org.joda.time.DateTime
 import spray.can.Http
+import spray.http._
 import spray.routing.SimpleRoutingApp
 
 
@@ -32,9 +33,18 @@ trait FakeVoteService extends VoteService {
           RealisticVotingResultsSupplier.supply
         }
       }
-
-
-  }
+    } ~
+      path("results.csv") {
+        get {
+          complete {
+            HttpResponse(StatusCodes.OK,
+              HttpEntity(ContentType(MediaTypes.`text/csv`, HttpCharsets.`UTF-8`),
+                resultsToCsvTransformer.asCsv(RealisticVotingResultsSupplier.supply)
+              )
+            )
+          }
+        }
+      }
 }
 
 object RealisticVotingResultsSupplier {
@@ -42,7 +52,7 @@ object RealisticVotingResultsSupplier {
   private val referenceStartTime = new DateTime(2014, 6, 12, 10, 0)
 
   def supply = VotingResults(Seq(
-    TalkVotingResults(Talk("spray_vs_scalatra", "dzem", "Spray vs. Scalatra",
+    TalkVotingResults(Talk("spray_vs_scalatra", "dzem", "Spraył vs. Scalatrą",
       referenceStartTime, referenceStartTime.plusHours(1)), positive = 10, negative = 2, Nil)
   ), Nil, 10, 2
   )

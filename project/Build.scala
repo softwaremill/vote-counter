@@ -63,11 +63,14 @@ object Dependencies {
 
   lazy val scalaCsv = "com.github.tototoshi" %% "scala-csv" % "1.0.0"
 
+
+  val mockitoVersion = "1.9.5"
+  val mockito = "org.mockito" % "mockito-all" % mockitoVersion % "test"
+
   lazy val commonDependencies = logging ++ macwire ++ httpStack ++ akka ++ dbStack ++ garden ++
     Seq(
-      scalaCsv
+      scalaCsv, mockito
     )
-
 }
 
 object VoteCounterBuild extends Build {
