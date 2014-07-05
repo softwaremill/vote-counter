@@ -58,17 +58,18 @@ trait VoteService extends HttpService with Json4sJacksonSupport with WebappPathD
       complete {
         votingResultAggregator.aggregateAllVotes
       }
-    } ~ path("results.csv") {
-      get {
-        complete {
-          HttpResponse(StatusCodes.OK,
-            HttpEntity(ContentType(MediaTypes.`text/csv`, HttpCharsets.`UTF-8`),
-              resultsToCsvTransformer.allResultsAsCsv)
-          )
-        }
+    }
+  } ~ path("results.csv") {
+    get {
+      complete {
+        HttpResponse(StatusCodes.OK,
+          HttpEntity(ContentType(MediaTypes.`text/csv`, HttpCharsets.`UTF-8`),
+            resultsToCsvTransformer.allResultsAsCsv)
+        )
       }
     }
   }
+
 
   protected def staticContentRoute = (path("charts") | path("")) {
     getWebappFile("index.html")
