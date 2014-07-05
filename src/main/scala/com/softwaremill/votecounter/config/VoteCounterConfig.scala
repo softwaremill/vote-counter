@@ -3,7 +3,7 @@ package com.softwaremill.votecounter.config
 import com.typesafe.config.{ConfigFactory, Config}
 import com.softwaremill.thegarden.lawn.config.ConfigWithDefaults
 import com.softwaremill.thegarden.web.jetty.WebServerConfig
-import org.joda.time.{DateTimeZone, LocalDate}
+import org.joda.time.{Period, DateTimeZone, LocalDate}
 
 trait BaseConfig extends ConfigWithDefaults {
 
@@ -16,6 +16,8 @@ trait BaseConfig extends ConfigWithDefaults {
   val sslKeystorePassword : Option[String] = getOptionalString(SslKeystorePasswordKey)
   val sslEnabled : Boolean = getBoolean("vote-counter.web.ssl-enabled", default = false)
   val webCacheFiles : Boolean = getBoolean("vote-counter.web.cache-files", default = true)
+
+  val sessionsDelay : Period = Period.minutes(15)
 }
 
 object BaseConfig {

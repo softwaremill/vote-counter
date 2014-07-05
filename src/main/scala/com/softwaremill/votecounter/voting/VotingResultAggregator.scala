@@ -1,5 +1,6 @@
 package com.softwaremill.votecounter.voting
 
+import com.softwaremill.votecounter.config.VoteCounterConfig
 import com.softwaremill.votecounter.db._
 import org.joda.time.{DateTime, Interval, Period}
 
@@ -61,7 +62,7 @@ private[voting] object IntermediateVotingResults {
 
 }
 
-class VotingResultAggregator(talksDao: TalksDao, votesDao: VotesDao) {
+class VotingResultAggregator(talksDao: TalksDao, votesDao: VotesDao, config: VoteCounterConfig) {
 
   def aggregateAllVotes : VotingResults =
     aggregateVotesForTalks(votesDao.findAllByRoom(), talksDao.findAllByRoom())
@@ -91,24 +92,24 @@ class VotingResultAggregator(talksDao: TalksDao, votesDao: VotesDao) {
     yield (new Interval(talk.voteStartsAt, talk.voteEndsAt), talk)
   }.sortBy { case (interval, talk) => interval.getStartMillis}
 
-  implicit private def talkWithVoteTimes(talk: Talk): TalkWithVoteTimes = TalkWithVoteTimes(talk)
+  implicit private def talkWithVoteTimes(talk: Talk): TalkWithVoteTimes = TalkWithVoteTimes(talk, config.sessionsDelay)
 }
 
-private[voting] case class TalkWithVoteTimes(talk: Talk) {
+private[voting] case class TalkWithVoteTimes(talk: Talk, sessionDelay : Period) {
 
   import com.softwaremill.votecounter.voting.VotingResultAggregator.{VoteWindowEndOffset, VoteWindowStartOffset}
 
   def voteStartsAt: DateTime = {
     talk.overrideVoteStartsAt match {
       case Some(dateTime) => dateTime
-      case None => talk.endsAt.minus(VoteWindowStartOffset)
+      case None => talk.endsAt.minus(VoteWindowStartOffset).plus(sessionDelay)
     }
   }
 
   def voteEndsAt: DateTime = {
     talk.overrideVoteEndsAt match {
       case Some(dateTime) => dateTime
-      case None => talk.endsAt.plus(VoteWindowEndOffset)
+      case None => talk.endsAt.plus(VoteWindowEndOffset).plus(sessionDelay)
     }
   }
 
