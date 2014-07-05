@@ -117,6 +117,6 @@ private[voting] case class TalkWithVoteTimes(talk: Talk, sessionDelay : Period) 
 
 
 object VotingResultAggregator {
-  val VoteWindowStartOffset = Period.minutes(15)
+  val VoteWindowStartOffset = Period.minutes(20)
   val VoteWindowEndOffset = Period.minutes(20)
 }

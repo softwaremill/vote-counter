@@ -19,7 +19,7 @@ trait BaseConfig extends ConfigWithDefaults {
 }
 
 trait VoteAggregatorConfig {
-  val sessionsDelay : Period = Period.minutes(15)
+  val sessionsDelay : Period = Period.minutes(10)
 }
 
 object BaseConfig {
