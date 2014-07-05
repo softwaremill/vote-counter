@@ -1,5 +1,6 @@
 package com.softwaremill.votecounter.voting
 
+import com.softwaremill.votecounter.config.VoteAggregatorConfig
 import org.scalatest.{BeforeAndAfterEach, ShouldMatchers, FlatSpec}
 import com.softwaremill.votecounter.testutil.SQLSupport
 import com.softwaremill.votecounter.db.{TalksDao, Vote, VotesDao, SmallConference}
@@ -9,7 +10,7 @@ with BeforeAndAfterEach {
 
   private val votesDao = new VotesDao(sqlDatabase)
   private val talksDao = new TalksDao(sqlDatabase)
-  private val votingResultsAggregator = new VotingResultAggregator(talksDao, votesDao)
+  private val votingResultsAggregator = new VotingResultAggregator(talksDao, votesDao, new VoteAggregatorConfig {})
 
   override protected def beforeEach() = {
     super.beforeEach()

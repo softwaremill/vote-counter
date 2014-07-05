@@ -1,6 +1,6 @@
 package com.softwaremill.votecounter.voting
 
-import com.softwaremill.votecounter.config.VoteCounterConfig
+import com.softwaremill.votecounter.config.VoteAggregatorConfig
 import com.softwaremill.votecounter.db._
 import org.joda.time.{DateTime, Interval, Period}
 
@@ -62,7 +62,7 @@ private[voting] object IntermediateVotingResults {
 
 }
 
-class VotingResultAggregator(talksDao: TalksDao, votesDao: VotesDao, config: VoteCounterConfig) {
+class VotingResultAggregator(talksDao: TalksDao, votesDao: VotesDao, config: VoteAggregatorConfig) {
 
   def aggregateAllVotes : VotingResults =
     aggregateVotesForTalks(votesDao.findAllByRoom(), talksDao.findAllByRoom())

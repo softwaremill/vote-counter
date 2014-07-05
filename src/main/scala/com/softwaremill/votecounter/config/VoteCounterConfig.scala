@@ -16,7 +16,9 @@ trait BaseConfig extends ConfigWithDefaults {
   val sslKeystorePassword : Option[String] = getOptionalString(SslKeystorePasswordKey)
   val sslEnabled : Boolean = getBoolean("vote-counter.web.ssl-enabled", default = false)
   val webCacheFiles : Boolean = getBoolean("vote-counter.web.cache-files", default = true)
+}
 
+trait VoteAggregatorConfig {
   val sessionsDelay : Period = Period.minutes(15)
 }
 
@@ -25,7 +27,7 @@ object BaseConfig {
   val SslKeystorePasswordKey = "vote-counter.web.keystore-password"
 }
 
-class VoteCounterConfig extends BaseConfig with WebServerConfig {
+class VoteCounterConfig extends BaseConfig with WebServerConfig with VoteAggregatorConfig {
 
   override def rootConfig = ConfigFactory.load()
 

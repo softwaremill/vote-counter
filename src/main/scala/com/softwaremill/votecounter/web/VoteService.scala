@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 import com.softwaremill.votecounter.db.VotesDao
-import com.softwaremill.votecounter.voting.{VoteRequest, VoteRequestProcessor, VotingResultAggregator}
+import com.softwaremill.votecounter.voting.{VoteCountsAggregator, VoteRequest, VoteRequestProcessor, VotingResultAggregator}
 import org.json4s.DefaultFormats
 import org.json4s.ext.JodaTimeSerializers
 import spray.httpx.Json4sJacksonSupport
@@ -23,6 +23,8 @@ trait VoteService extends HttpService with Json4sJacksonSupport with WebappPathD
 
   protected val votingResultAggregator: VotingResultAggregator
 
+  protected val voteCountsAggregator: VoteCountsAggregator
+
   protected def voteRoute =
     path("votes") {
       get {
@@ -38,6 +40,14 @@ trait VoteService extends HttpService with Json4sJacksonSupport with WebappPathD
             }
           }
         }
+    } ~ pathPrefix("votes") {
+      path("counts") {
+        get {
+          complete {
+            voteCountsAggregator.computeCounts()
+          }
+        }
+      }
     }
 
   protected def resultsRoute = path("results") {
