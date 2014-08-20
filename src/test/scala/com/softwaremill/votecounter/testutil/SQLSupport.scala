@@ -1,8 +1,9 @@
 package com.softwaremill.votecounter.testutil
 
-import org.scalatest.{Suite, BeforeAndAfterEach, BeforeAndAfterAll, FlatSpec}
-import scala.slick.jdbc.StaticQuery
 import com.softwaremill.votecounter.h2.{DBInitializer, SQLDatabase}
+import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, Suite}
+
+import scala.slick.jdbc.StaticQuery
 
 trait SQLSupport extends BeforeAndAfterAll with BeforeAndAfterEach {
   this: Suite =>
