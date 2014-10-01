@@ -76,7 +76,7 @@ class VotingResultAggregator(talksDao: TalksDao, votesDao: VotesDao, config: Vot
   private def aggregateVotesInSingleRoom(votes: List[Vote], talks: List[Talk]): VotingResults = {
     val intervals = talkVoteIntervals(talks)
 
-    votes.foldLeft(IntermediateVotingResults.zeros) { case (acc, vote) =>
+    votes.foldLeft(IntermediateVotingResults.zeros) { (acc, vote) =>
       findTalkBasedOnIntervalForVote(vote, intervals) match {
         case Some(talk) => acc.withClassifiedVote(vote, talk)
         case None => acc.withUnclassifiedVote(vote)
