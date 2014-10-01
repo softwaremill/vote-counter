@@ -11,30 +11,9 @@ import scala.slick.jdbc.JdbcBackend._
 import com.softwaremill.votecounter.config.BaseConfig
 import java.sql.Time
 
-
-private[h2] trait CustomColumnDataTypes {
-
-  this: SQLDatabase =>
-
-
-  // FIXME can anyone more knowledgeable in Scala tell me why doesn't this work?
-  //
-  //  implicit val dateTimeColumnType = MappedColumnType.base[DateTime, java.sql.Timestamp](
-  //    dt => new java.sql.Timestamp(dt.getMillis),
-  //    t => new DateTime(t.getTime).withZone(DateTimeZone.UTC)
-  //  )
-  //
-  //  implicit val localTimeColumnType = MappedColumnType.base[LocalTime, java.sql.Time](
-  //    dt => new Time(LocalDateTime.now().
-  //      withTime(dt.getHourOfDay, dt.getMinuteOfHour, dt.getSecondOfMinute, dt.getMillisOfSecond).toDate.getTime),
-  //    t => new LocalDateTime(t.getTime).toLocalTime
-  //  )
-
-}
-
 case class SQLDatabase(db: scala.slick.jdbc.JdbcBackend.Database,
                        driver: JdbcProfile,
-                       ds: DataSource) extends Logging with CustomColumnDataTypes {
+                       ds: DataSource) extends Logging {
 
   import driver.simple._
 
