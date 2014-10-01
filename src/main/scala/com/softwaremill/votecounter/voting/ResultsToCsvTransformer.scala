@@ -6,7 +6,7 @@ import com.github.tototoshi.csv._
 class ResultsToCsvTransformer(aggregator: VotingResultAggregator) {
 
   implicit val csvFormat = new DefaultCSVFormat {
-    override val delimiter: Char = ';'
+    override val delimiter: Char = ','
   }
 
   def allResultsAsCsv: String = asCsv(aggregator.aggregateAllVotes)
