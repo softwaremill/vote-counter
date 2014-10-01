@@ -8,7 +8,7 @@ trait TalksProvider {
   def talks: Seq[Talk]
 }
 
-class ConfituraTalks(agendaFileReader: AgendaFileReader,
+class ConfituraTalks(agendaFileReader: ConfituraAgendaReader,
                      confituraDate: LocalDate, confituraTimeZone: DateTimeZone) extends TalksProvider {
 
   override def talks = {

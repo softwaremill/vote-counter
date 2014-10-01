@@ -2,6 +2,7 @@ package com.softwaremill.votecounter.infrastructure
 
 import com.softwaremill.macwire.Macwire
 import com.softwaremill.votecounter.config.VoteCounterConfig
+import com.softwaremill.votecounter.jdd.{JddAgendaReader, JddTalks, JddRooms, JddDevices}
 import com.softwaremill.votecounter.voting.{ResultsToCsvTransformer, VoteCountsAggregator, VotingResultAggregator, VoteRequestProcessor}
 import com.typesafe.config.ConfigFactory
 import com.softwaremill.votecounter.h2.{ConferenceDataInitializer, TestDataPopulator, DBInitializer, SQLDatabase}
@@ -33,12 +34,20 @@ trait DBModule extends Macwire with DefaultShutdownHandlerModule with ConfigModu
 }
 
 trait ConfituraModule extends Macwire with ConfigModule {
-  lazy val agendaFileReader = wire[AgendaFileReader]
+  lazy val agendaFileReader = wire[ConfituraAgendaReader]
 
   lazy val roomsProvider: RoomsProvider = wire[ConfituraRooms]
   lazy val talksProvider: TalksProvider = new ConfituraTalks(agendaFileReader,
     config.conferenceDate, config.conferenceTimeZone)
   lazy val devicesProvider: DevicesProvider = wire[ConfituraDevices]
+}
+
+trait JddModule extends Macwire with ConfigModule {
+  lazy val jddTalksReader = wire[JddAgendaReader]
+
+  lazy val roomsProvider: RoomsProvider = wire[JddRooms]
+  lazy val talksProvider: TalksProvider = new JddTalks(jddTalksReader)
+  lazy val devicesProvider: DevicesProvider = wire[JddDevices]
 }
 
 trait VotesModule extends Macwire with DBModule {
@@ -53,7 +62,7 @@ trait VotesModule extends Macwire with DBModule {
 }
 
 trait CoreModule extends Macwire with DefaultShutdownHandlerModule
-with ConfigModule with DBModule with ConfituraModule with VotesModule {
+with ConfigModule with DBModule with JddModule with VotesModule {
 
   lazy val actorSystem = ActorSystem("vc-main") onShutdown { actorSystem =>
     actorSystem.shutdown()

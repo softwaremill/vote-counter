@@ -3,9 +3,9 @@ package com.softwaremill.votecounter.confitura
 import org.scalatest.{ShouldMatchers, FlatSpec}
 import com.typesafe.scalalogging.slf4j.LazyLogging
 
-class AgendaFileReaderSpec extends FlatSpec with ShouldMatchers with LazyLogging {
+class ConfituraAgendaReaderSpec extends FlatSpec with ShouldMatchers with LazyLogging {
 
-  private val agenda = new AgendaFileReader().read()
+  private val agenda = new ConfituraAgendaReader().read()
 
   it should "read and parse the agenda3.json file" in {
 
@@ -25,21 +25,21 @@ class AgendaFileReaderSpec extends FlatSpec with ShouldMatchers with LazyLogging
 
 object RoomPrinter extends App {
 
-  private val agenda = new AgendaFileReader().read()
+  private val agenda = new ConfituraAgendaReader().read()
 
   println(agenda.talks.map(talk => (talk.room, talk.roomId)).distinct.sorted.mkString("\n"))
 }
 
 object LongestTalkTitlePrinter extends App {
 
-  private val agenda = new AgendaFileReader().read()
+  private val agenda = new ConfituraAgendaReader().read()
 
   println(agenda.talks.map(_.title).maxBy(_.length))
 }
 
 object TalkTitleIdsPrinter extends App {
 
-  private val agenda = new AgendaFileReader().read()
+  private val agenda = new ConfituraAgendaReader().read()
 
   println(agenda.talks.map(_.talkId).mkString("\n"))
 

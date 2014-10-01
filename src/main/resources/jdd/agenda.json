@@ -1,0 +1,345 @@
+{"lectures": [
+    {
+        "track": 1,
+        "lecture": "10 things I\u2019d tell my younger self about (Java) Web Development",
+        "end": "12:45:00",
+        "date": "2014-10-13",
+        "start": "12:00:00"
+    },
+    {
+        "track": 3,
+        "lecture": "Agile Transformation - How to Change Minds, Deliver Amazing Results and Enjoy The Journey!",
+        "end": "16:45:00",
+        "date": "2014-10-14",
+        "start": "16:00:00"
+    },
+    {
+        "track": 4,
+        "lecture": "Archi-kata",
+        "end": "17:45:00",
+        "date": "2014-10-14",
+        "start": "16:00:00"
+    },
+    {
+        "track": 4,
+        "lecture": "Behaviour Driven Development, BDD, with Cucumber for Java",
+        "end": "15:45:00",
+        "date": "2014-10-14",
+        "start": "14:00:00"
+    },
+    {
+        "track": 1,
+        "lecture": "B\u0142\u0119dy uwierzytelniania i zarz\u0105dzania sesj\u0105 w JEE",
+        "end": "17:45:00",
+        "date": "2014-10-14",
+        "start": "17:00:00"
+    },
+    {
+        "track": 1,
+        "lecture": "Code review - jak zyska\u0107 wi\u0119cej ni\u017c traci\u0107?",
+        "end": "15:45:00",
+        "date": "2014-10-14",
+        "start": "15:00:00"
+    },
+    {
+        "track": 2,
+        "lecture": "Continuous delivery: capitalizing high quality automated tests",
+        "end": "15:45:00",
+        "date": "2014-10-14",
+        "start": "15:00:00"
+    },
+    {
+        "track": 3,
+        "lecture": "Conversation Patterns for Software Professionals",
+        "end": "16:45:00",
+        "date": "2014-10-13",
+        "start": "16:00:00"
+    },
+    {
+        "track": 3,
+        "lecture": "Co Tw\u00f3j kod m\u00f3wi do Ciebie",
+        "end": "09:45:00",
+        "date": "2014-10-14",
+        "start": "09:00:00"
+    },
+    {
+        "track": 2,
+        "lecture": "Crazy Fast Build Times or When 10 Seconds Starts to Make You Nervous",
+        "end": "18:45:00",
+        "date": "2014-10-13",
+        "start": "18:00:00"
+    },
+    {
+        "track": 2,
+        "lecture": "Docker.io - Versioned Linux Containers for JVM Devops",
+        "end": "14:45:00",
+        "date": "2014-10-14",
+        "start": "14:00:00"
+    },
+    {
+        "track": 4,
+        "lecture": "Duke Script",
+        "end": "12:45:00",
+        "date": "2014-10-14",
+        "start": "11:00:00"
+    },
+    {
+        "track": 4,
+        "lecture": "Effective Refactoring",
+        "end": "16:45:00",
+        "date": "2014-10-13",
+        "start": "15:00:00"
+    },
+    {
+        "track": 2,
+        "lecture": "Enforcing Architecture Patterns with Static Code Analysis",
+        "end": "12:45:00",
+        "date": "2014-10-13",
+        "start": "12:00:00"
+    },
+    {
+        "track": 3,
+        "lecture": "Fearless Developer Road to Driving Technical Change",
+        "end": "18:45:00",
+        "date": "2014-10-13",
+        "start": "18:00:00"
+    },
+    {
+        "track": 3,
+        "lecture": "Game of throneware, or how not to get killed, when a developer becomes a manager",
+        "end": "14:45:00",
+        "date": "2014-10-14",
+        "start": "14:00:00"
+    },
+    {
+        "track": 2,
+        "lecture": "Go! The one language you have to try in 2014.",
+        "end": "16:45:00",
+        "date": "2014-10-14",
+        "start": "16:00:00"
+    },
+    {
+        "track": 2,
+        "lecture": "High Performance Logging",
+        "end": "11:45:00",
+        "date": "2014-10-14",
+        "start": "11:00:00"
+    },
+    {
+        "track": 3,
+        "lecture": "How to defeat feature gluttony",
+        "end": "12:45:00",
+        "date": "2014-10-13",
+        "start": "12:00:00"
+    },
+    {
+        "track": 1,
+        "lecture": "How to rebuild monolithic application to micro services architecture ? ",
+        "end": "12:45:00",
+        "date": "2014-10-14",
+        "start": "12:00:00"
+    },
+    {
+        "track": 4,
+        "lecture": "import allegro.tech.internal.* czyli budowanie zaplecza technicznego w korporacji",
+        "end": "12:45:00",
+        "date": "2014-10-13",
+        "start": "12:00:00"
+    },
+    {
+        "track": 2,
+        "lecture": "Introducing Groovy into Java project",
+        "end": "10:45:00",
+        "date": "2014-10-14",
+        "start": "10:00:00"
+    },
+    {
+        "track": 4,
+        "lecture": "Introduction to OSGi",
+        "end": "18:45:00",
+        "date": "2014-10-13",
+        "start": "17:00:00"
+    },
+    {
+        "track": 2,
+        "lecture": "Jak wci\u0105gn\u0105\u0107 eksperta domenowego w wir modelowania - wizualne i lingwistyczne techniki DDD",
+        "end": "15:45:00",
+        "date": "2014-10-13",
+        "start": "15:00:00"
+    },
+    {
+        "track": 1,
+        "lecture": "java.util.concurrent czyli wielow\u0105tkowo\u015b\u0107 z r\u00f3\u017cnych perspektyw, tych mniejszych i tych enterprise",
+        "end": "13:45:00",
+        "date": "2014-10-13",
+        "start": "13:00:00"
+    },
+    {
+        "track": 1,
+        "lecture": "JEE'ish development without hassle",
+        "end": "16:45:00",
+        "date": "2014-10-14",
+        "start": "16:00:00"
+    },
+    {
+        "track": 4,
+        "lecture": "JVM bytecode manipulation techniques for JVM \"freaks wannabe\"",
+        "end": "10:45:00",
+        "date": "2014-10-14",
+        "start": "09:00:00"
+    },
+    {
+        "track": 3,
+        "lecture": "Legacy Code - Efektywna Rewitalizacja",
+        "end": "12:45:00",
+        "date": "2014-10-14",
+        "start": "10:00:00"
+    },
+    {
+        "track": 1,
+        "lecture": "Mapowanie relacyjno-obiektowe prawdziwych obiekt\u00f3w",
+        "end": "11:45:00",
+        "date": "2014-10-13",
+        "start": "11:00:00"
+    },
+    {
+        "track": 2,
+        "lecture": "Multitenant Search",
+        "end": "17:45:00",
+        "date": "2014-10-14",
+        "start": "17:00:00"
+    },
+    {
+        "track": 1,
+        "lecture": "My\u015bl obiektowo, pisz funkcyjnie",
+        "end": "10:45:00",
+        "date": "2014-10-14",
+        "start": "10:00:00"
+    },
+    {
+        "track": 3,
+        "lecture": "Pragmatic pair programming",
+        "end": "15:45:00",
+        "date": "2014-10-13",
+        "start": "15:00:00"
+    },
+    {
+        "track": 3,
+        "lecture": "QA to QA: Shifting from Quality Assurance to Agile Quality",
+        "end": "11:45:00",
+        "date": "2014-10-13",
+        "start": "11:00:00"
+    },
+    {
+        "track": 1,
+        "lecture": "Reactive Java",
+        "end": "11:45:00",
+        "date": "2014-10-14",
+        "start": "11:00:00"
+    },
+    {
+        "track": 1,
+        "lecture": "Real Life Lambdas",
+        "end": "15:45:00",
+        "date": "2014-10-13",
+        "start": "15:00:00"
+    },
+    {
+        "track": 1,
+        "lecture": "REST API Versioning",
+        "end": "18:45:00",
+        "date": "2014-10-13",
+        "start": "18:00:00"
+    },
+    {
+        "track": 2,
+        "lecture": "Scala, approachable functional programming",
+        "end": "09:45:00",
+        "date": "2014-10-14",
+        "start": "09:00:00"
+    },
+    {
+        "track": 1,
+        "lecture": "Spring 4, Java EE 7 or Both?",
+        "end": "16:45:00",
+        "date": "2014-10-13",
+        "start": "16:00:00"
+    },
+    {
+        "track": 3,
+        "lecture": "Strategiczna Refaktoryzacja",
+        "end": "13:45:00",
+        "date": "2014-10-13",
+        "start": "13:00:00"
+    },
+    {
+        "track": 2,
+        "lecture": "Systematyczny architekt na drodze ku planowanemu postarzaniu",
+        "end": "11:45:00",
+        "date": "2014-10-13",
+        "start": "11:00:00"
+    },
+    {
+        "track": 4,
+        "lecture": "The mythical 10x developer",
+        "end": "13:45:00",
+        "date": "2014-10-13",
+        "start": "13:00:00"
+    },
+    {
+        "track": 3,
+        "lecture": "The responsible developer",
+        "end": "17:45:00",
+        "date": "2014-10-13",
+        "start": "17:00:00"
+    },
+    {
+        "track": 1,
+        "lecture": "TIMTOWTDI and Java",
+        "end": "09:45:00",
+        "date": "2014-10-14",
+        "start": "09:00:00"
+    },
+    {
+        "track": 2,
+        "lecture": "To nie zawsze wina aplikacji",
+        "end": "17:45:00",
+        "date": "2014-10-13",
+        "start": "17:00:00"
+    },
+    {
+        "track": 2,
+        "lecture": "Using ASCII Art to Analyze your Source Code with Neo4j and OSS Tools",
+        "end": "13:45:00",
+        "date": "2014-10-13",
+        "start": "13:00:00"
+    },
+    {
+        "track": 1,
+        "lecture": "What you won't read in books about implementing REST services",
+        "end": "17:45:00",
+        "date": "2014-10-13",
+        "start": "17:00:00"
+    },
+    {
+        "track": 2,
+        "lecture": "Working with logs",
+        "end": "12:45:00",
+        "date": "2014-10-14",
+        "start": "12:00:00"
+    },
+    {
+        "track": 2,
+        "lecture": "Wykorzystanie podej\u015bcia Domain-Driven Design w systemach legacy",
+        "end": "16:45:00",
+        "date": "2014-10-13",
+        "start": "16:00:00"
+    },
+    {
+        "track": 3,
+        "lecture": "\u017bycie po wdro\u017ceniu, czyli utrzymanie aplikacji",
+        "end": "15:45:00",
+        "date": "2014-10-14",
+        "start": "15:00:00"
+    }
+], "version": "2014-10-01 14:35:17.137206+00:00"}

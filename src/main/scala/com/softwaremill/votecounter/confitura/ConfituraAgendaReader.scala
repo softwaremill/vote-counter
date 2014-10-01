@@ -10,13 +10,13 @@ import org.json4s.JsonAST.{JObject, JString}
 import java.text.Normalizer.Form
 
 
-class AgendaFileReader {
+class ConfituraAgendaReader {
 
   import org.json4s.DefaultFormats
   import org.json4s.ext.JodaTimeSerializers
   import org.json4s.jackson.JsonMethods._
 
-  val AgendaFilePath = "agenda3.json"
+  val AgendaFilePath = "confitura/agenda3.json"
 
   implicit val formats = new DefaultFormats {
     override protected def dateFormatter =
