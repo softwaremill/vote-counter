@@ -1,12 +1,8 @@
 package com.softwaremill.votecounter.confitura
 
+import com.softwaremill.votecounter.common.TalksProvider
 import com.softwaremill.votecounter.db.Talk
 import org.joda.time.{LocalTime, DateTimeZone, LocalDate}
-
-trait TalksProvider {
-
-  def talks: Seq[Talk]
-}
 
 class ConfituraTalks(agendaFileReader: ConfituraAgendaReader,
                      confituraDate: LocalDate, confituraTimeZone: DateTimeZone) extends TalksProvider {

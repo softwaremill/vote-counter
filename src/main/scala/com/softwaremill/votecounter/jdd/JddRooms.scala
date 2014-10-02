@@ -1,6 +1,6 @@
 package com.softwaremill.votecounter.jdd
 
-import com.softwaremill.votecounter.confitura.RoomsProvider
+import com.softwaremill.votecounter.common.RoomsProvider
 import com.softwaremill.votecounter.db.Room
 
 class JddRooms extends RoomsProvider {

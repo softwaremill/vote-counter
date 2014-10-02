@@ -1,6 +1,6 @@
 package com.softwaremill.votecounter.h2
 
-import com.softwaremill.votecounter.confitura.{DevicesProvider, RoomsProvider, TalksProvider}
+import com.softwaremill.votecounter.common.{DevicesProvider, RoomsProvider, TalksProvider}
 import com.softwaremill.votecounter.db._
 import com.softwaremill.votecounter.infrastructure.AppFlags
 import org.joda.time.DateTime

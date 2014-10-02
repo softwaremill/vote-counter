@@ -1,6 +1,6 @@
 package com.softwaremill.votecounter.jdd
 
-import com.softwaremill.votecounter.confitura.TalksProvider
+import com.softwaremill.votecounter.common.TalksProvider
 import com.softwaremill.votecounter.db.Talk
 import org.joda.time.{DateTimeZone, LocalTime}
 

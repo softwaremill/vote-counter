@@ -1,16 +1,17 @@
 package com.softwaremill.votecounter.infrastructure
 
+import akka.actor.{ActorSystem, Props}
 import com.softwaremill.macwire.Macwire
-import com.softwaremill.votecounter.config.VoteCounterConfig
-import com.softwaremill.votecounter.jdd.{JddAgendaReader, JddTalks, JddRooms, JddDevices}
-import com.softwaremill.votecounter.voting.{ResultsToCsvTransformer, VoteCountsAggregator, VotingResultAggregator, VoteRequestProcessor}
-import com.typesafe.config.ConfigFactory
-import com.softwaremill.votecounter.h2.{ConferenceDataInitializer, TestDataPopulator, DBInitializer, SQLDatabase}
-import com.softwaremill.votecounter.db._
-import akka.actor.{Props, ActorSystem}
 import com.softwaremill.thegarden.lawn.shutdownables._
-import com.softwaremill.votecounter.web.{SslServer, VoteCounterWebService}
+import com.softwaremill.votecounter.common._
+import com.softwaremill.votecounter.config.VoteCounterConfig
 import com.softwaremill.votecounter.confitura._
+import com.softwaremill.votecounter.db._
+import com.softwaremill.votecounter.h2.{ConferenceDataInitializer, DBInitializer, SQLDatabase, TestDataPopulator}
+import com.softwaremill.votecounter.jdd.{JddAgendaReader, JddDevices, JddRooms, JddTalks}
+import com.softwaremill.votecounter.voting.{ResultsToCsvTransformer, VoteCountsAggregator, VoteRequestProcessor, VotingResultAggregator}
+import com.softwaremill.votecounter.web.{SslServer, VoteCounterWebService}
+import com.typesafe.config.ConfigFactory
 
 
 trait ConfigModule {

@@ -1,11 +1,7 @@
 package com.softwaremill.votecounter.confitura
 
+import com.softwaremill.votecounter.common.RoomsProvider
 import com.softwaremill.votecounter.db.Room
-
-trait RoomsProvider {
-
-  def rooms: Seq[Room]
-}
 
 class ConfituraRooms extends RoomsProvider {
 
