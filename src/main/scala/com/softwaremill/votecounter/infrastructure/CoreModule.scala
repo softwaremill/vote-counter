@@ -3,12 +3,12 @@ package com.softwaremill.votecounter.infrastructure
 import akka.actor.{ActorSystem, Props}
 import com.softwaremill.macwire.Macwire
 import com.softwaremill.thegarden.lawn.shutdownables._
-import com.softwaremill.votecounter.common._
+import com.softwaremill.votecounter.common.{AgendaProvider, DevicesProvider, RoomsProvider}
 import com.softwaremill.votecounter.config.VoteCounterConfig
 import com.softwaremill.votecounter.confitura._
 import com.softwaremill.votecounter.db._
-import com.softwaremill.votecounter.h2.{ConferenceDataInitializer, DBInitializer, SQLDatabase, TestDataPopulator}
-import com.softwaremill.votecounter.jdd.{JddAgendaReader, JddDevices, JddRooms, JddTalks}
+import com.softwaremill.votecounter.h2._
+import com.softwaremill.votecounter.jdd.{JddAgendaReader, JddDevices, JddRooms}
 import com.softwaremill.votecounter.voting.{ResultsToCsvTransformer, VoteCountsAggregator, VoteRequestProcessor, VotingResultAggregator}
 import com.softwaremill.votecounter.web.{SslServer, VoteCounterWebService}
 import com.typesafe.config.ConfigFactory
@@ -32,23 +32,19 @@ trait DBModule extends Macwire with DefaultShutdownHandlerModule with ConfigModu
   lazy val talksDao = wire[TalksDao]
 
   lazy val dbInitializer = wire[DBInitializer]
+  lazy val agendaVersionAccessor = wire[AgendaVersionAccessor]
 }
 
 trait ConfituraModule extends Macwire with ConfigModule {
-  lazy val agendaFileReader = wire[ConfituraAgendaReader]
-
   lazy val roomsProvider: RoomsProvider = wire[ConfituraRooms]
-  lazy val talksProvider: TalksProvider = new ConfituraTalks(agendaFileReader,
-    config.conferenceDate, config.conferenceTimeZone)
   lazy val devicesProvider: DevicesProvider = wire[ConfituraDevices]
+  lazy val agendaProvider: AgendaProvider = new ConfituraAgendaReader(config.conferenceDate, config.conferenceTimeZone)
 }
 
 trait JddModule extends Macwire with ConfigModule {
-  lazy val jddTalksReader = wire[JddAgendaReader]
-
   lazy val roomsProvider: RoomsProvider = wire[JddRooms]
-  lazy val talksProvider: TalksProvider = new JddTalks(jddTalksReader)
   lazy val devicesProvider: DevicesProvider = wire[JddDevices]
+  lazy val agendaProvider: AgendaProvider = wire[JddAgendaReader]
 }
 
 trait VotesModule extends Macwire with DBModule {

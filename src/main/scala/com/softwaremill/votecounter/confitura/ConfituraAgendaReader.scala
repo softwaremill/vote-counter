@@ -1,6 +1,8 @@
 package com.softwaremill.votecounter.confitura
 
-import org.joda.time.LocalTime
+import com.softwaremill.votecounter.common.{Agenda, AgendaProvider}
+import com.softwaremill.votecounter.db.Talk
+import org.joda.time.{DateTimeZone, LocalDate, LocalTime}
 import java.text.{Normalizer, SimpleDateFormat}
 import java.util.Locale
 import scala.io.Source
@@ -10,7 +12,7 @@ import org.json4s.JsonAST.{JObject, JString}
 import java.text.Normalizer.Form
 
 
-class ConfituraAgendaReader {
+class ConfituraAgendaReader(confituraDate: LocalDate, confituraTimeZone: DateTimeZone) extends AgendaProvider {
 
   import org.json4s.DefaultFormats
   import org.json4s.ext.JodaTimeSerializers
@@ -64,35 +66,29 @@ class ConfituraAgendaReader {
   private[confitura] def parseJson(jsonString: String) = {
     val ast = parse(jsonString)
     val fixedAst = fixJson(ast)
-    val agenda = fixedAst.extract[Agenda]
+    val agenda = fixedAst.extract[ConfituraAgenda]
 
     agenda
   }
 
-  def read(): Agenda =
-    parseJson(
-      Source.fromInputStream(
-        Resources.inputStreamInClasspath(AgendaFilePath)
-      ).getLines().mkString("\n"))
+  private[confitura] def readAgendaFile(): ConfituraAgenda = parseJson(Source.fromInputStream(
+    Resources.inputStreamInClasspath(AgendaFilePath)
+  ).getLines().mkString("\n"))
 
-}
+  def read(): Agenda = {
+    val confituraAgenda = readAgendaFile()
 
-case class Agenda(version: String, talks: Seq[TalkData]) {
-  private[confitura] def findDuplicateTalksIds = {
-    val allTalkIds = talks.map(_.talkId)
-    val distinctTalkIds = allTalkIds.distinct
-
-    allTalkIds.diff(distinctTalkIds).distinct
-  }
-
-  private[confitura] def verifyUniqueTalkIds() = {
-    val duplicateTalksIds = findDuplicateTalksIds
-    if (duplicateTalksIds.nonEmpty) {
-      throw new IllegalStateException("Found following duplicate talk ids: " +
-        s"${duplicateTalksIds.mkString(",")}.")
+    val talksWithConferenceDate = confituraAgenda.talks.map { td =>
+      def withConferenceDate = confituraDate.toDateTime(_: LocalTime, confituraTimeZone)
+      new Talk(td.talkId, td.roomId, td.title, withConferenceDate(td.start), withConferenceDate(td.end),
+        None, None)
     }
+
+    Agenda(confituraAgenda.version, talksWithConferenceDate)
   }
 }
+
+case class ConfituraAgenda(version: String, talks: Seq[TalkData])
 
 case class TalkData(title: String, description: String, room: String, start: LocalTime, end: LocalTime,
                     speakers: Seq[Speaker]) {

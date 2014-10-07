@@ -11,7 +11,7 @@ class JddAgendaReaderSpec extends FlatSpec with ShouldMatchers {
   }
 
   it should "have more than 10 talks (sanity check)" in {
-    val numberOfTalks = agenda.lectures.length
+    val numberOfTalks = agenda.talks.length
     numberOfTalks should be > 10
   }
 

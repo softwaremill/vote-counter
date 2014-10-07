@@ -8,3 +8,4 @@ src/main/resources/*/devices.json
 src/main/resources/keystore*.jks
 application.conf
 upload-to-pi.sh
+.agenda_version

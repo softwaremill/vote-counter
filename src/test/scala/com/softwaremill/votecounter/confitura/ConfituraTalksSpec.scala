@@ -5,10 +5,10 @@ import com.softwaremill.votecounter.infrastructure.Beans
 
 class ConfituraTalksSpec extends FlatSpec with ShouldMatchers {
 
-  val confituraTalks = new ConfituraTalks(new ConfituraAgendaReader,
-    Beans.config.conferenceDate, Beans.config.conferenceTimeZone)
+  val confituraTalks = new ConfituraAgendaReader(Beans.config.conferenceDate, Beans.config.conferenceTimeZone)
+    .read().talks
 
   it should "convert all agenda talks" in {
-    confituraTalks.talks.length shouldEqual 37
+    confituraTalks.length shouldEqual 37
   }
 }

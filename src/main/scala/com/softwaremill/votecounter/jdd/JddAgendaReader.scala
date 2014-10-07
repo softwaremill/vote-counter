@@ -3,20 +3,23 @@ package com.softwaremill.votecounter.jdd
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+import com.softwaremill.votecounter.common.{Agenda, AgendaProvider}
+import com.softwaremill.votecounter.db.Talk
 import com.softwaremill.votecounter.util.Resources
-import org.joda.time.{LocalDate, LocalTime}
+import org.joda.time.{DateTimeZone, LocalDate, LocalTime}
 import org.json4s.CustomSerializer
 import org.json4s.JsonAST.JString
 
 import scala.io.Source
 
-class JddAgendaReader {
+class JddAgendaReader extends AgendaProvider {
 
   import org.json4s.DefaultFormats
   import org.json4s.ext.JodaTimeSerializers
   import org.json4s.jackson.JsonMethods._
 
   val AgendaFilePath = "jdd/agenda.json"
+  lazy val TimeZone = DateTimeZone.forID("Europe/Warsaw")
 
   implicit val formats = new DefaultFormats {
     override protected def dateFormatter =
@@ -43,11 +46,18 @@ class JddAgendaReader {
     parse(jsonString).extract[JddAgenda]
   }
 
-  def read(): JddAgenda = {
-    parseJson(
+  def read(): Agenda = {
+    val agenda = parseJson(
       Source.fromInputStream(
         Resources.inputStreamInClasspath(AgendaFilePath)
       ).getLines().mkString("\n"))
+
+    val talks = agenda.lectures.map { t =>
+      def withConferenceDate = t.date.toDateTime(_: LocalTime, TimeZone)
+      Talk(t.talkId, t.track, t.lecture, withConferenceDate(t.start), withConferenceDate(t.end))
+    }
+
+    Agenda(agenda.version, talks)
   }
 }
 

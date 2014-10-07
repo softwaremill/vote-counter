@@ -35,4 +35,10 @@ class TalksDao(protected val database: SQLDatabase) extends DBSchema {
     }
   }
 
+  def replaceAll(newTalks: Seq[Talk]): Unit = {
+    db.withSession { implicit session =>
+      talks.delete
+      newTalks.foreach(talks.insert)
+    }
+  }
 }
