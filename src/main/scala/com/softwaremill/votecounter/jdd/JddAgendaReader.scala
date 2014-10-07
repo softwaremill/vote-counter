@@ -6,13 +6,14 @@ import java.util.Locale
 import com.softwaremill.votecounter.common.{Agenda, AgendaProvider}
 import com.softwaremill.votecounter.db.Talk
 import com.softwaremill.votecounter.util.Resources
+import com.typesafe.scalalogging.slf4j.LazyLogging
 import org.joda.time.{DateTimeZone, LocalDate, LocalTime}
 import org.json4s.CustomSerializer
 import org.json4s.JsonAST.JString
 
 import scala.io.Source
 
-class JddAgendaReader extends AgendaProvider {
+class JddAgendaReader extends AgendaProvider with LazyLogging {
 
   import org.json4s.DefaultFormats
   import org.json4s.ext.JodaTimeSerializers
@@ -46,11 +47,15 @@ class JddAgendaReader extends AgendaProvider {
     parse(jsonString).extract[JddAgenda]
   }
 
+  protected def json: String = {
+    logger.info(s"Retrieving JDD agenda from file: $AgendaFilePath")
+    Source.fromInputStream(
+      Resources.inputStreamInClasspath(AgendaFilePath)
+    ).getLines().mkString("\n")
+  }
+
   def read(): Agenda = {
-    val agenda = parseJson(
-      Source.fromInputStream(
-        Resources.inputStreamInClasspath(AgendaFilePath)
-      ).getLines().mkString("\n"))
+    val agenda = parseJson(json)
 
     val talks = agenda.lectures.map { t =>
       def withConferenceDate = t.date.toDateTime(_: LocalTime, TimeZone)

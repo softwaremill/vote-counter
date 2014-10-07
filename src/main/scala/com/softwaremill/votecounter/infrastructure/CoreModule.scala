@@ -8,7 +8,7 @@ import com.softwaremill.votecounter.config.VoteCounterConfig
 import com.softwaremill.votecounter.confitura._
 import com.softwaremill.votecounter.db._
 import com.softwaremill.votecounter.h2._
-import com.softwaremill.votecounter.jdd.{JddAgendaReader, JddDevices, JddRooms}
+import com.softwaremill.votecounter.jdd.{JddDevices, JddHttpAgendaReader, JddRooms}
 import com.softwaremill.votecounter.voting.{ResultsToCsvTransformer, VoteCountsAggregator, VoteRequestProcessor, VotingResultAggregator}
 import com.softwaremill.votecounter.web.{SslServer, VoteCounterWebService}
 import com.typesafe.config.ConfigFactory
@@ -44,7 +44,7 @@ trait ConfituraModule extends Macwire with ConfigModule {
 trait JddModule extends Macwire with ConfigModule {
   lazy val roomsProvider: RoomsProvider = wire[JddRooms]
   lazy val devicesProvider: DevicesProvider = wire[JddDevices]
-  lazy val agendaProvider: AgendaProvider = wire[JddAgendaReader]
+  lazy val agendaProvider: AgendaProvider = wire[JddHttpAgendaReader]
 }
 
 trait VotesModule extends Macwire with DBModule {
