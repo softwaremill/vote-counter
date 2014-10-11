@@ -6,6 +6,7 @@ import com.softwaremill.votecounter.db.Room
 class JddRooms extends RoomsProvider {
 
   override def rooms = Seq(
+    ("Main Track", "Main Track"),
     ("Sputnik", "1"),
     ("Helios", "2"),
     ("Messenger", "3"),
