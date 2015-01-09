@@ -1,0 +1,12 @@
+.git
+.idea
+data
+project
+src
+vendor
+web
+target/resolution_cache
+target/streams
+target/test_reports
+target/scala-2.11/classes
+target/scala-2.11/test-classes
