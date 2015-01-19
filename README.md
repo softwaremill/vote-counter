@@ -27,6 +27,8 @@ Please remember to update [application.conf.template](application.conf.template)
 
 2. Run the JAR manually or use the Docker image. The server listens on `8080` for HTTP and on `8090` for HTTPS requests.
 
+If the devices are configured to send heartbeats, you can view the status of the devices under the `/status` URL (or see the raw JSON data at `/heartbeats`).
+
 #### Running manually
 ```
 java -cp java -cp target/scala-2.11/vote-counter-assembly-1.0.jar -Dconfig.file=application.conf com.softwaremill.votecounter.web.VoteCounterWeb
