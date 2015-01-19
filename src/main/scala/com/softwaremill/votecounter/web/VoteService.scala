@@ -3,7 +3,8 @@ package com.softwaremill.votecounter.web
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-import com.softwaremill.votecounter.db.VotesDao
+import com.softwaremill.votecounter.db.{DevicesDao, VotesDao}
+import com.softwaremill.votecounter.heartbeat.{HeartbeatRequest, HeartbeatRequestProcessor}
 import com.softwaremill.votecounter.voting._
 import org.json4s.DefaultFormats
 import org.json4s.ext.JodaTimeSerializers
@@ -27,6 +28,10 @@ trait VoteService extends HttpService with Json4sJacksonSupport with WebappPathD
   protected val voteCountsAggregator: VoteCountsAggregator
 
   protected val resultsToCsvTransformer: ResultsToCsvTransformer
+
+  protected val heartbeatRequestProcessor: HeartbeatRequestProcessor
+
+  protected val devicesDao: DevicesDao
 
   protected def voteRoute =
     path("votes") {
@@ -70,6 +75,21 @@ trait VoteService extends HttpService with Json4sJacksonSupport with WebappPathD
     }
   }
 
+  protected def heartbeatsRoute = path("heartbeats") {
+    get  {
+      complete {
+        devicesDao.findHeartbeats()
+      }
+    } ~
+    post {
+      entity(as[HeartbeatRequest]) { heartbeatRequest =>
+        complete {
+          heartbeatRequestProcessor.processRequest(heartbeatRequest)
+          "OK"
+        }
+      }
+    }
+  }
 
   protected def staticContentRoute = (path("charts") | path("")) {
     getWebappFile("index.html")
@@ -79,6 +99,6 @@ trait VoteService extends HttpService with Json4sJacksonSupport with WebappPathD
     getWebappDirectory("styles")
   }
 
-  protected def voteServiceRoutes = voteRoute ~ resultsRoute ~ staticContentRoute
+  protected def voteServiceRoutes = voteRoute ~ resultsRoute ~ staticContentRoute ~ heartbeatsRoute
 
 }

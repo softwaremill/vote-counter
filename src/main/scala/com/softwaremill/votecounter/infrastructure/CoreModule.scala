@@ -8,6 +8,7 @@ import com.softwaremill.votecounter.config.VoteCounterConfig
 import com.softwaremill.votecounter.confitura._
 import com.softwaremill.votecounter.db._
 import com.softwaremill.votecounter.h2._
+import com.softwaremill.votecounter.heartbeat.HeartbeatRequestProcessor
 import com.softwaremill.votecounter.jdd.{JddDevices, JddHttpAgendaReader, JddRooms}
 import com.softwaremill.votecounter.voting.{ResultsToCsvTransformer, VoteCountsAggregator, VoteRequestProcessor, VotingResultAggregator}
 import com.softwaremill.votecounter.web.{SslServer, VoteCounterWebService}
@@ -56,6 +57,8 @@ trait VotesModule extends Macwire with DBModule {
   lazy val voteCountsAggregator = wire[VoteCountsAggregator]
 
   lazy val resultsToCsvTransformer = wire[ResultsToCsvTransformer]
+
+  lazy val heartbeatRequestProcessor = wire[HeartbeatRequestProcessor]
 }
 
 trait CoreModule extends Macwire with DefaultShutdownHandlerModule

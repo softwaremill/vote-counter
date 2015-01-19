@@ -2,7 +2,8 @@ package com.softwaremill.votecounter.web
 
 import akka.actor.Actor
 import akka.io.IO
-import com.softwaremill.votecounter.db.VotesDao
+import com.softwaremill.votecounter.db.{DevicesDao, VotesDao}
+import com.softwaremill.votecounter.heartbeat.HeartbeatRequestProcessor
 import com.softwaremill.votecounter.infrastructure.Beans
 import com.softwaremill.votecounter.voting.{ResultsToCsvTransformer, VoteCountsAggregator, VoteRequestProcessor, VotingResultAggregator}
 import com.typesafe.scalalogging.slf4j.StrictLogging
@@ -23,6 +24,10 @@ class VoteCounterWebService(beans: Beans) extends Actor with VoteService {
   override protected val voteCountsAggregator: VoteCountsAggregator = beans.voteCountsAggregator
 
   override protected val resultsToCsvTransformer: ResultsToCsvTransformer = beans.resultsToCsvTransformer
+
+  override protected val heartbeatRequestProcessor: HeartbeatRequestProcessor = beans.heartbeatRequestProcessor
+
+  override protected val devicesDao: DevicesDao = beans.deviceDao
 
   def receive = runRoute(voteServiceRoutes)
 

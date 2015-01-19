@@ -34,7 +34,9 @@ trait DBSchema {
 
     def roomId = column[String]("room_id", O.NotNull)
 
-    def * = (id.?, key, name, roomId) <>(Device.tupled, Device.unapply)
+    def lastSeen = column[DateTime]("last_seen", O.Nullable)
+
+    def * = (id.?, key, name, roomId, lastSeen.?) <>(Device.tupled, Device.unapply)
 
     def room = foreignKey("room_id", roomId, rooms)(_.id)
 
